@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.example.e_commerce.home.ProductItems" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/product_cardView"
+            android:layout_width="@dimen/_185sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+
+            android:background="@color/white"
+            android:elevation="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_15sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:elevation="@dimen/_6sdp"
+            tools:src="@drawable/scarf"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            app:layout_constraintEnd_toStartOf="@id/product_title"
+            app:layout_constraintStart_toStartOf="@+id/product_cardView"
+            app:layout_constraintTop_toTopOf="@+id/product_cardView" />
+
+        <TextView
+            android:id="@+id/product_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/_6sdp"
+            android:fontFamily="@font/neusa_medium"
+            android:text="@{item.title}"
+            android:textColor="#515C6F"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/_5sdp"
+            app:layout_constraintTop_toTopOf="@id/product_image"
+            app:layout_constraintStart_toEndOf="@+id/product_image"
+            tools:text="@string/red_scarf" />
+
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/neusa_regular"
+            tools:text="@string/_49_99"
+            android:text="@{`$`.concat(Double.toString(item.price))}"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold"
+            android:textColor="#515C6F"
+            android:elevation="@dimen/_6sdp"
+            app:layout_constraintTop_toBottomOf="@+id/product_title"
+            app:layout_constraintStart_toStartOf="@+id/product_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

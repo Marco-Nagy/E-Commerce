@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <data>
+                <variable
+                    name="item"
+                    type="com.example.e_commerce.home.CategoryItems" />
+
+        </data>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F6F7F9">
+
+
+                <ImageButton
+                    android:id="@+id/category_image"
+                    android:layout_width="@dimen/_92sdp"
+                    android:layout_height="@dimen/_92sdp"
+                    tools:src="@drawable/apparel"
+                    android:background="@drawable/gradient_item_bg"
+                    android:elevation="@dimen/_3sdp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/category_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:paddingEnd="@dimen/_2sdp"
+                    android:elevation="@dimen/_6sdp"
+                    android:shadowRadius="10"
+                    android:fontFamily="sans-serif-medium"
+                    tools:text="@string/apparel"
+                    android:text="@{item.title}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/category_image"
+                    app:layout_constraintEnd_toEndOf="@+id/category_image"
+                    app:layout_constraintStart_toStartOf="@id/category_image" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

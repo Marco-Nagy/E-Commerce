@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.example.e_commerce.home.LatestItems" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:background="@color/white"
+            android:elevation="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_15sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/latest_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/banner_1" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageButton
+            android:id="@+id/see_more_Btn"
+            android:layout_width="@dimen/_140sdp"
+            android:scaleX="1.2"
+            android:scaleY="1.1"
+            android:layout_height="@dimen/_50sdp"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:color="?attr/colorAccent"
+            android:elevation="@dimen/_6sdp"
+            android:foregroundGravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/see_more"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView"
+            app:layout_constraintStart_toStartOf="@+id/cardView" />
+
+        <TextView
+            android:id="@+id/text_see_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:elevation="@dimen/_6sdp"
+            android:fontFamily="@font/neusa_next_std_bold"
+            android:src="@drawable/see_more"
+            android:text="@string/see_more"
+            android:textAllCaps="true"
+            android:textColor="#727C8E"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/see_more_Btn"
+            app:layout_constraintEnd_toEndOf="@+id/see_more_Btn"
+            app:layout_constraintStart_toStartOf="@+id/see_more_Btn"
+            app:layout_constraintTop_toTopOf="@+id/see_more_Btn" />
+
+        <TextView
+            android:id="@+id/latest_textV"
+            android:layout_width="@dimen/_134sdp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:elevation="@dimen/_6sdp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="start"
+            android:maxLines="3"
+            tools:text="@string/summer_clothes"
+            android:text="@{item.title}"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/_17ssp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toTopOf="@id/see_more_Btn"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toTopOf="@+id/cardView" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
