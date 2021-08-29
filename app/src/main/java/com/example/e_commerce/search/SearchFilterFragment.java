@@ -1,5 +1,7 @@
 package com.example.e_commerce.search;
 
+import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,9 +12,12 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.FragmentSearchFilterBinding;
@@ -23,6 +28,22 @@ import org.jetbrains.annotations.NotNull;
 public class SearchFilterFragment extends DialogFragment {
     FragmentSearchFilterBinding binding;
     NavController navController;
+    protected void setDialogGravity(int gravity) {
+        Dialog dialog = getDialog();
+        if (dialog != null) {
+            Window window = dialog.getWindow();
+            if (window != null) {
+                WindowManager.LayoutParams params = window.getAttributes();
+                params.width = WindowManager.LayoutParams.WRAP_CONTENT;
+                params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+                params.horizontalMargin = 15;
+                params.gravity = gravity;
+                params.dimAmount =0;
+                params.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+                window.setAttributes(params);
+            }
+        }
+    }
 
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
@@ -32,17 +53,15 @@ public class SearchFilterFragment extends DialogFragment {
         return binding.getRoot();
     }
 
+
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        navController = Navigation.findNavController(view);
+        setDialogGravity( Gravity.RELATIVE_LAYOUT_DIRECTION |Gravity.START);
         binding.applyFilterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_searchFilterFragment_to_searchResultFragment);
-
-//                Navigation.findNavController(v.findViewById(R.id.home_navigation))
-//                        .navigate(R.id.action_searchFilterFragment_to_searchResultFragment);
+                dismiss();
 
             }
         });

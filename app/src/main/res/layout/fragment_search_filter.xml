@@ -8,7 +8,7 @@
     </data>
 
     <LinearLayout
-        android:layout_width="@dimen/_270sdp"
+        android:layout_width="@dimen/_220sdp"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_gravity="end"
@@ -16,7 +16,7 @@
         tools:context=".search.SearchFilterFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="@dimen/_270sdp"
+            android:layout_width="@dimen/_220sdp"
             android:layout_height="@dimen/_20sdp">
 
             <TextView
@@ -53,7 +53,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="@dimen/_270sdp"
+            android:layout_width="@dimen/_220sdp"
             android:layout_height="@dimen/_25sdp"
             android:layout_marginTop="@dimen/_20sdp">
 
@@ -100,7 +100,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="@dimen/_270sdp"
+            android:layout_width="@dimen/_220sdp"
             android:layout_height="@dimen/_25sdp"
             android:layout_marginTop="@dimen/_20sdp">
 
@@ -146,8 +146,8 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="@dimen/_270sdp"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_width="@dimen/_220sdp"
+            android:layout_height="@dimen/_25sdp"
             android:layout_marginTop="@dimen/_20sdp">
 
             <TextView
@@ -168,19 +168,30 @@
 
 
             <ImageButton
-                android:id="@+id/see_more_color_Btn"
+                android:id="@+id/color_desc_Btn"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_20sdp"
+                android:layout_height="@dimen/_25sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:src="@drawable/color"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/see_more_color_Btn"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
+            <ImageButton
+                android:id="@+id/see_more_color_Btn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:src="@drawable/more_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="@dimen/_270sdp"
+            android:layout_width="@dimen/_220sdp"
             android:layout_height="@dimen/_25sdp"
             android:layout_marginTop="@dimen/_20sdp">
 
@@ -226,7 +237,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="@dimen/_270sdp"
+            android:layout_width="@dimen/_220sdp"
             android:layout_height="@dimen/_25sdp"
             android:layout_marginTop="@dimen/_20sdp">
 
@@ -272,17 +283,18 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="@dimen/_270sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_width="@dimen/_220sdp"
+            android:layout_height="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_100sdp">
-            <androidx.appcompat.widget.AppCompatImageButton
+
+            <ImageButton
                 android:id="@+id/apply_filter_Btn"
-                android:layout_width="@dimen/_150sdp"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="match_parent"
                 android:background="@color/white"
                 android:foregroundGravity="center"
+                android:scaleType="centerCrop"
                 android:src="@drawable/cta_button"
-                android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

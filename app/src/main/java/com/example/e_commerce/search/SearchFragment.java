@@ -1,5 +1,6 @@
 package com.example.e_commerce.search;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.e_commerce.NotificationsActivity;
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.FragmentSearchBinding;
 import com.example.e_commerce.home.ProductItems;
@@ -26,7 +28,7 @@ import java.util.List;
 
 public class SearchFragment extends Fragment {
 FragmentSearchBinding binding;
-NavController navController;
+
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -39,11 +41,10 @@ NavController navController;
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setRecentlyRecyclerView();
-        navController = Navigation.findNavController(view);
         binding.searchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_navigation_search_to_searchResultFragment);
+                startActivity(new Intent(getContext(), SearchResultActivity.class));
             }
         });
     }
