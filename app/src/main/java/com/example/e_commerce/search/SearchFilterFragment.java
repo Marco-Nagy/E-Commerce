@@ -1,33 +1,26 @@
 package com.example.e_commerce.search;
 
 import android.app.Dialog;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.DialogFragment;
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.FragmentSearchFilterBinding;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-
 import org.jetbrains.annotations.NotNull;
-
 public class SearchFilterFragment extends DialogFragment {
     FragmentSearchFilterBinding binding;
-    NavController navController;
+
+
+
+
     protected void setDialogGravity(int gravity) {
         Dialog dialog = getDialog();
         if (dialog != null) {
@@ -38,11 +31,16 @@ public class SearchFilterFragment extends DialogFragment {
                 params.height = WindowManager.LayoutParams.WRAP_CONTENT;
                 params.horizontalMargin = 15;
                 params.gravity = gravity;
-                params.dimAmount =0;
+                params.dimAmount = 0;
                 params.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
                 window.setAttributes(params);
             }
         }
+    }
+
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -57,13 +55,8 @@ public class SearchFilterFragment extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setDialogGravity( Gravity.RELATIVE_LAYOUT_DIRECTION |Gravity.START);
-        binding.applyFilterBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
 
-            }
-        });
+        setDialogGravity( Gravity.TOP |Gravity.START|Gravity.CENTER);
+        binding.applyFilterBtn.setOnClickListener(v -> dismiss());
     }
 }

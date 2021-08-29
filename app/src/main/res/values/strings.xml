@@ -55,4 +55,8 @@
     <string name="v_neck_pi">V Neck Shirt - Pink</string>
     <string name="r_neck_bas">Round Neck Shirt - Basic</string>
     <string name="chemise">Chemise - </string>
+    <string name="title_activity_product">ProductActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="share_this">Share This</string>
 </resources>

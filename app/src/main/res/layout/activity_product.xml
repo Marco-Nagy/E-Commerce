@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.example.e_commerce.search.RatedItems" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".product.ProductActivity">
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:background="@drawable/gradient_item_bg"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/back_Btn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/back_1" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/search_cardV"
+                android:layout_width="@dimen/_230sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginEnd="@dimen/_2sdp"
+                android:layout_margin="@dimen/_5sdp"
+                app:cardCornerRadius="@dimen/_15sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchTextV">
+
+
+                <TextView
+                    android:id="@+id/product_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="@dimen/_6sdp"
+                    android:fontFamily="@font/neusa_light"
+                    android:gravity="center_horizontal"
+                    android:text="@{item.title}"
+                    android:textColor="#515C6F"
+                    android:textSize="@dimen/_15ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/red_scarf" />
+
+                <TextView
+                    android:id="@+id/product_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/neusa_next_std_bold"
+                    tools:text="@string/_49_99"
+                    android:text="@{`$`.concat(Double.toString(item.price))}"
+                    android:textSize="@dimen/_15ssp"
+                    android:textStyle="bold"
+                    android:textColor="#515C6F"
+                    android:elevation="@dimen/_6sdp"
+                    android:layout_marginStart="@dimen/_50sdp"
+                    app:layout_constraintEnd_toStartOf="@id/rating_image"
+                    app:layout_constraintTop_toBottomOf="@+id/product_title"
+                    app:layout_constraintStart_toStartOf="@+id/product_title" />
+
+                <ImageView
+                    android:id="@+id/rating_image"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@drawable/rating_7"
+                    android:elevation="@dimen/_6sdp"
+                    android:foregroundGravity="center_horizontal"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    app:layout_constraintStart_toEndOf="@id/product_price"
+                    app:layout_constraintTop_toBottomOf="@+id/product_title" />
+
+                <TextView
+                    android:id="@+id/rating_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/rating_image"
+                    app:layout_constraintEnd_toEndOf="@+id/rating_image"
+                    app:layout_constraintStart_toStartOf="@+id/rating_image"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    app:layout_constraintTop_toTopOf="@+id/rating_image"
+                    android:text="@{Double.toString(item.rate)}"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_10ssp"
+                    android:elevation="@dimen/_6sdp"
+                    tools:text="4.5" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageButton
+                android:id="@+id/cart_Btn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cart" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/imageSlider"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:sliderAnimationDuration="600"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderAutoCycleEnabled="true"
+                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorGravity="center_horizontal|top"
+                app:sliderIndicatorMargin="15dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="#5A5A5A"
+                app:sliderIndicatorUnselectedColor="#FFF"
+                app:sliderScrollTimeInSec="1"
+                app:sliderStartAutoCycle="true" />
+
+        </androidx.cardview.widget.CardView>
+        <ImageButton
+            android:id="@+id/shareThis_Btn"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="@dimen/_165sdp"
+            android:layout_height="wrap_content"
+            android:background="#F5F6F8"
+            android:elevation="@dimen/_3sdp"
+            android:src="@drawable/share_this"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <ImageButton
+            android:id="@+id/addCart_Btn"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="@dimen/_165sdp"
+            android:layout_height="wrap_content"
+            android:background="#F5F6F8"
+            android:elevation="@dimen/_3sdp"
+            android:src="@drawable/add_to_cart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1" />
+
+        <fragment
+            android:id="@+id/fragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/shareThis_Btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_33sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
