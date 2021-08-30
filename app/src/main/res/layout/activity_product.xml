@@ -132,7 +132,7 @@
             app:sliderAnimationDuration="2000"
             app:sliderAutoCycleDirection="back_and_forth"
             app:sliderAutoCycleEnabled="true"
-            app:sliderIndicatorAnimationDuration="1000"
+            app:sliderIndicatorAnimationDuration="2000"
             app:sliderIndicatorGravity="center_horizontal|top"
             app:sliderIndicatorMargin="15dp"
             app:sliderIndicatorOrientation="horizontal"
