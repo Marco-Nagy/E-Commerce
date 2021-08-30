@@ -1,6 +1,7 @@
 package com.example.e_commerce.home;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,16 +12,20 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.FragmentHomeBinding;
+import com.example.e_commerce.product.ProductActivity;
+import com.example.e_commerce.search.RatedItems;
 
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +49,8 @@ public class HomeFragment extends Fragment {
         setLatestRecyclerView();
         setProductsRecyclerView();
     }
-    public void setCategoriesRecyclerView(){
+
+    public void setCategoriesRecyclerView() {
         List<CategoryItems> categories = new ArrayList<>();
         categories.add(new CategoryItems(R.drawable.apparel, R.string.apparel));
         categories.add(new CategoryItems(R.drawable.beauty, R.string.beauty));
@@ -53,42 +59,57 @@ public class HomeFragment extends Fragment {
         categories.add(new CategoryItems(R.drawable.furniture, R.string.furniture));
         categories.add(new CategoryItems(R.drawable.home_1, R.string.home));
         categories.add(new CategoryItems(R.drawable.stationary, R.string.stationary));
-        CategoriesAdapter categoriesAdapter = new CategoriesAdapter( categories, getContext());
+        CategoriesAdapter categoriesAdapter = new CategoriesAdapter(categories, getContext());
         binding.categoriesRV.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
         binding.categoriesRV.setAdapter(categoriesAdapter);
     }
-    public void setLatestRecyclerView(){
+
+    public void setLatestRecyclerView() {
         List<LatestItems> latestItems = new ArrayList<>();
         latestItems.add(new LatestItems(R.drawable.banner_1, R.string.summer_clothes));
-        latestItems.add(new LatestItems(R.drawable.banner_2,R.string.summer_clothes));
+        latestItems.add(new LatestItems(R.drawable.banner_2, R.string.summer_clothes));
         latestItems.add(new LatestItems(R.drawable.banner_1, R.string.summer_clothes));
-        latestItems.add(new LatestItems(R.drawable.banner_2,R.string.summer_clothes));
+        latestItems.add(new LatestItems(R.drawable.banner_2, R.string.summer_clothes));
         latestItems.add(new LatestItems(R.drawable.banner_1, R.string.summer_clothes));
-        latestItems.add(new LatestItems(R.drawable.banner_2,R.string.summer_clothes));
+        latestItems.add(new LatestItems(R.drawable.banner_2, R.string.summer_clothes));
 
-        LatestAdapter latestAdapter = new LatestAdapter( latestItems, getContext());
+        LatestAdapter latestAdapter = new LatestAdapter(latestItems, getContext());
         binding.latestRV.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
         binding.latestRV.setAdapter(latestAdapter);
 
     }
-    public void setProductsRecyclerView(){
-        List<ProductItems> productItems = new ArrayList<>();
-        productItems.add(new ProductItems(R.drawable.women_shoes, R.string.ankle_boots,49.99));
-        productItems.add(new ProductItems(R.drawable.backpack, R.string.back_pack,20.58));
-        productItems.add(new ProductItems(R.drawable.scarf, R.string.red_scarf,11.00));
-        productItems.add(new ProductItems(R.drawable.women_shoes, R.string.ankle_boots,49.99));
-        productItems.add(new ProductItems(R.drawable.backpack, R.string.back_pack,20.58));
-        productItems.add(new ProductItems(R.drawable.scarf, R.string.red_scarf,11.00));
 
-       // ProductsAdapter productsAdapter = new ProductsAdapter( productItems, getContext());
-        ProductsAdapter productsAdapter = new ProductsAdapter(productItems,getContext());
+    public void setProductsRecyclerView() {
+        List<ProductItems> productItems = new ArrayList<>();
+        productItems.add(new ProductItems(R.drawable.women_shoes, R.string.ankle_boots, 49.99,4.2));
+        productItems.add(new ProductItems(R.drawable.backpack, R.string.back_pack, 20.58,4.3));
+        productItems.add(new ProductItems(R.drawable.scarf, R.string.red_scarf, 11.00,3.7));
+        productItems.add(new ProductItems(R.drawable.women_shoes, R.string.ankle_boots, 49.99,4.8));
+        productItems.add(new ProductItems(R.drawable.backpack, R.string.back_pack, 20.58,3.7));
+        productItems.add(new ProductItems(R.drawable.scarf, R.string.red_scarf, 11.00,4.9));
+
+        // ProductsAdapter productsAdapter = new ProductsAdapter( productItems, getContext());
+        ProductsAdapter productsAdapter = new ProductsAdapter(productItems, getContext(), productInterface);
         binding.productRV.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
         binding.productRV.setAdapter(productsAdapter);
 
     }
 
+    ProductInterface productInterface = new ProductInterface() {
+        @Override
+        public void onProductClick(ProductItems productItems) {
+            Intent intent = new Intent(requireContext(), ProductActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("productItems", productItems);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
 
+    };
 }
+
+
+

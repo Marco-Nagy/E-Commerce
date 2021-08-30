@@ -1,14 +1,19 @@
 package com.example.e_commerce.home;
 
-public class ProductItems {
+import java.io.Serializable;
+
+public class ProductItems implements Serializable {
+
     private int image;
     private int title;
     private double price;
+    private double rate;
 
-    public ProductItems(int image, int title, double price) {
+    public ProductItems(int image, int title, double price, double rate) {
         this.image = image;
         this.title = title;
         this.price = price;
+        this.rate = rate;
     }
 
     public int getImage() {
@@ -33,5 +38,13 @@ public class ProductItems {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
     }
 }

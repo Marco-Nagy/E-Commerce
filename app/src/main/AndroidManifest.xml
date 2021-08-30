@@ -12,7 +12,9 @@
         <activity
             android:name=".product.ProductActivity"
             android:label="@string/title_activity_product"
-            android:theme="@style/Theme.ECommerce.NoActionBar"></activity>
+            android:theme="@style/Theme.ECommerce.NoActionBar">
+
+        </activity>
         <activity android:name=".search.SearchResultActivity" />
         <activity android:name=".MessagesActivity" />
         <activity android:name=".NotificationsActivity" />

@@ -50,12 +50,12 @@ FragmentSearchBinding binding;
     }
     public void setRecentlyRecyclerView(){
         List<ProductItems> productItems = new ArrayList<>();
-        productItems.add(new ProductItems(R.drawable.women_shoes, R.string.ankle_boots,49.99));
-        productItems.add(new ProductItems(R.drawable.backpack, R.string.back_pack,20.58));
-        productItems.add(new ProductItems(R.drawable.scarf, R.string.red_scarf,11.00));
-        productItems.add(new ProductItems(R.drawable.women_shoes, R.string.ankle_boots,49.99));
-        productItems.add(new ProductItems(R.drawable.backpack, R.string.back_pack,20.58));
-        productItems.add(new ProductItems(R.drawable.scarf, R.string.red_scarf,11.00));
+        productItems.add(new ProductItems(R.drawable.women_shoes, R.string.ankle_boots,49.99,4.1));
+        productItems.add(new ProductItems(R.drawable.backpack, R.string.back_pack,20.58,3.5));
+        productItems.add(new ProductItems(R.drawable.scarf, R.string.red_scarf,11.00,3.9));
+        productItems.add(new ProductItems(R.drawable.women_shoes, R.string.ankle_boots,49.99,4.6));
+        productItems.add(new ProductItems(R.drawable.backpack, R.string.back_pack,20.58,4.7));
+        productItems.add(new ProductItems(R.drawable.scarf, R.string.red_scarf,11.00,4.2));
         RecentlyAdapter recentlyAdapter = new RecentlyAdapter(productItems,getContext());
         binding.recentlyRV.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.HORIZONTAL, false));

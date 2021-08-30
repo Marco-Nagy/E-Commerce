@@ -59,4 +59,7 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="share_this">Share This</string>
+    <string name="products">Products</string>
+    <string name="reviews">Reviews</string>
+    <string name="details">Details</string>
 </resources>

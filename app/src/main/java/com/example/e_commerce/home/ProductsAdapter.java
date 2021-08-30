@@ -1,13 +1,17 @@
 package com.example.e_commerce.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.e_commerce.MessagesActivity;
+import com.example.e_commerce.NotificationsActivity;
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.ProductItemBinding;
 
@@ -18,10 +22,12 @@ import java.util.List;
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductViewHolder> {
     List<ProductItems> productItems;
     Context context;
+    ProductInterface productInterface;
 
-    public ProductsAdapter(List<ProductItems> productItems, Context context) {
+    public ProductsAdapter(List<ProductItems> productItems, Context context, ProductInterface productInterface) {
         this.productItems = productItems;
         this.context = context;
+        this.productInterface = productInterface;
     }
 
     public int getItemsImage(ProductItems image) {
@@ -38,11 +44,17 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ProductsAdapter.ProductViewHolder holder, int position) {
-//        holder.binding.setItem(productItems.get(position));
-//        holder.binding.productImage.setImageResource(getItemsImage(productItems.get(position)));
+        ProductItems products= productItems.get(position);
         holder.binding.setItem(productItems.get(position));
         holder.binding.productImage.setImageResource(getItemsImage(productItems.get(position)));
         holder.binding.productPrice.setText(productItems.get(position).toString());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                productInterface.onProductClick(products);
+
+            }
+        });
     }
 
     @Override
@@ -58,4 +70,5 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
             this.binding = binding;
         }
     }
+
 }

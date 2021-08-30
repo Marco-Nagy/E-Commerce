@@ -1,6 +1,9 @@
 package com.example.e_commerce.search;
 
-public class RatedItems {
+import java.io.Serializable;
+
+public class RatedItems implements Serializable {
+
     private int image;
     private int title;
     private double price;
