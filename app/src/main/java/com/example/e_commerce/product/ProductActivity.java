@@ -4,24 +4,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.e_commerce.CartFragment;
-import com.example.e_commerce.HomeActivity;
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.ActivityProductBinding;
+import com.example.e_commerce.home.HomeActivity;
 import com.example.e_commerce.home.ProductItems;
-import com.google.android.material.bottomnavigation.BottomNavigationItemView;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+
 public class ProductActivity extends AppCompatActivity {
     ActivityProductBinding binding;
-
+    TabAdapter adapter;
 
     ProductItems productItems;
     int[] image;
@@ -29,13 +33,10 @@ public class ProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product);
+
         productItems = (ProductItems) getIntent().getSerializableExtra("productItems");
         image = new int[]{productItems.getImage(), productItems.getImage(), productItems.getImage()};
-        SliderAdapter sliderAdapter = new SliderAdapter(image);
-        binding.imageSlider.setSliderAdapter(sliderAdapter);
-        binding.imageSlider.setIndicatorAnimation(IndicatorAnimationType.WORM);
-        binding.imageSlider.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
-        binding.imageSlider.startAutoCycle();
+
         binding.productTitle.setText(productItems.getTitle());
         binding.productPrice.setText(String.valueOf(productItems.getPrice()));
         binding.ratingText.setText(String.valueOf(productItems.getRate()));
@@ -61,8 +62,16 @@ public class ProductActivity extends AppCompatActivity {
                 finish();
             }
         });
+        setImageSlider();
+        setTabLayout();
+    }
+    private void setImageSlider(){
 
-
+        SliderAdapter sliderAdapter = new SliderAdapter(image);
+        binding.imageSlider.setSliderAdapter(sliderAdapter);
+        binding.imageSlider.setIndicatorAnimation(IndicatorAnimationType.WORM);
+        binding.imageSlider.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
+        binding.imageSlider.startAutoCycle();
     }
 
     private void navigateToCartFragment() {
@@ -71,5 +80,49 @@ public class ProductActivity extends AppCompatActivity {
         intent.putExtra("FromReservation", "1");
         startActivity(intent);
 
+    }
+    private static class TabAdapter extends FragmentPagerAdapter{
+        ArrayList<Fragment> fragmentArrayList =new ArrayList<>();
+        ArrayList<String> stringArrayList =new ArrayList<>();
+        public void AddFragment(Fragment fragment ,String string){
+            fragmentArrayList.add(fragment);
+            stringArrayList.add(string);
+
+        }
+
+        public TabAdapter(@NonNull @NotNull FragmentManager fm) {
+            super(fm);
+        }
+
+
+        @NonNull
+        @NotNull
+        @Override
+        public Fragment getItem(int position) {
+            return fragmentArrayList.get(position);
+        }
+
+        /**
+         * Return the number of views available.
+         */
+        @Override
+        public int getCount() {
+            return fragmentArrayList.size();
+        }
+
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return stringArrayList.get(position);
+        }
+    }
+    private void setTabLayout(){
+        adapter = new TabAdapter(getSupportFragmentManager());
+        adapter.AddFragment(new TabProductFragment(),"Product");
+        adapter.AddFragment(new TabDetailsFragment(),"Details");
+        adapter.AddFragment(new TabReviewsFragment(),"Reviews");
+        binding.viewPager.setAdapter(adapter);
+        binding.tabLayout.setupWithViewPager(binding.viewPager);
     }
 }

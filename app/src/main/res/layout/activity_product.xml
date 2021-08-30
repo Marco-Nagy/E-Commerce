@@ -143,59 +143,44 @@
             app:sliderScrollTimeInSec="1"
             app:sliderStartAutoCycle="true" />
 
-
-
-
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_33sdp"
-            android:weightSum="3"
+            android:layout_height="0dp"
             android:background="#F5F6F8"
+            android:orientation="vertical"
+            android:weightSum="4"
+            app:layout_constraintBottom_toTopOf="@+id/shareThis_Btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageSlider"
-            app:layout_constraintBottom_toTopOf="@id/fragment"
-            android:orientation="horizontal">
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"
-                android:background="@drawable/button"
-                android:layout_height="wrap_content"
-                android:text="@string/products"
-                android:textSize="@dimen/_15ssp"/>
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"
-                android:background="@drawable/button"
-                android:layout_height="wrap_content"
-                android:text="@string/details"
-                android:textSize="@dimen/_15ssp"/>
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"
-                android:background="@drawable/button"
-                android:layout_height="wrap_content"
-                android:text="@string/reviews"
-                android:textSize="@dimen/_15ssp"/>
+            app:layout_constraintTop_toBottomOf="@+id/imageSlider">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5"
+                android:layout_margin="@dimen/_8sdp"
+                app:tabIndicator="@drawable/group_20"
+                app:tabIndicatorAnimationMode="elastic"
+                app:tabIndicatorGravity="stretch"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@color/white" />
+
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.5"
+                app:layout_constraintBottom_toTopOf="@+id/shareThis_Btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/fragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/shareThis_Btn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
         <ImageButton
             android:id="@+id/shareThis_Btn"
@@ -205,7 +190,7 @@
             android:background="#F5F6F8"
             android:elevation="@dimen/_3sdp"
             android:src="@drawable/share_this"
-            app:layout_constraintTop_toBottomOf="@id/fragment"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
@@ -218,7 +203,7 @@
             android:src="@drawable/add_to_cart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="1"
-           app:layout_constraintBottom_toBottomOf="@id/product_activity"
-            app:layout_constraintTop_toBottomOf="@id/fragment"/>
+           app:layout_constraintBottom_toBottomOf="@id/product_activity" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
