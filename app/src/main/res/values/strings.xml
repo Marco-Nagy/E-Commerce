@@ -66,5 +66,14 @@
     <string name="total">Total</string>
     <string name="_81_57">$81.57</string>
     <string name="free_domestic_shipping">Free Domestic Shipping</string>
-    <string name="checkout">CHECKOUT</string>
+    <string name="checkout">Checkout</string>
+    <string name="place_order">PLACE ORDER</string>
+    <string name="add_promo_code">Add Promo Code</string>
+    <string name="shipping_address">Shipping Address</string>
+    <string name="address_text">No 123, Sub Street, Main Street, City Name, Province, Country</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="items">items</string>
+    <string name="order_placed">Order Placed!</string>
+    <string name="order_placed_text">Your order was placed successfully. For more details, check All My Orders page under Profile tab</string>
+    <string name="my_orders">MY ORDERS</string>
 </resources>

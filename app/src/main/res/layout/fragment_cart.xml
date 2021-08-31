@@ -86,12 +86,15 @@
                 app:layout_constraintTop_toBottomOf="@id/amountTextV" />
 
             <TextView
+                android:id="@+id/checkout_BTN"
                 android:layout_width="@dimen/_175sdp"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/_70sdp"
                 android:scaleType="centerCrop"
                 android:background="@drawable/checkout_btn"
                 android:text="@string/checkout"
                 android:gravity="center"
+                android:textStyle="bold"
+                android:textAllCaps="true"
                 android:elevation="@dimen/_6sdp"
                 android:paddingEnd="@dimen/_20sdp"
                 android:textSize="@dimen/_12ssp"

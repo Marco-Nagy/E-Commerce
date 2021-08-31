@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F5F6F8"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".cart.SuccessActivity">
+        <ImageButton
+            android:id="@+id/close"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="#F6F7F9"
+            android:src="@drawable/close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_gravity="center"
+                android:elevation="@dimen/_6sdp"
+                android:src="@drawable/icon_4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_placed"
+                android:textSize="@dimen/_30ssp"
+                android:textColor="#515C6F"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_65sdp"
+                android:text="@string/order_placed_text"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:gravity="center"
+                android:textSize="@dimen/_15ssp"
+
+                android:textColor="#515C6F"/>
+            <TextView
+                android:id="@+id/placeOrder_Btn"
+                android:layout_width="@dimen/_175sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:background="@drawable/checkout_btn"
+                android:elevation="@dimen/_6sdp"
+                android:gravity="center"
+                android:paddingEnd="@dimen/_20sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:scaleType="centerCrop"
+                android:text="@string/my_orders"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

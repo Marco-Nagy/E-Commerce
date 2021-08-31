@@ -8,18 +8,20 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.e_commerce.R;
-import com.example.e_commerce.databinding.ActivityCheckoutBinding;
+import com.example.e_commerce.databinding.ActivitySuccessBinding;
+import com.example.e_commerce.home.HomeActivity;
+import com.example.e_commerce.product.ProductActivity;
 
-public class CheckoutActivity extends AppCompatActivity {
-ActivityCheckoutBinding binding;
+public class SuccessActivity extends AppCompatActivity {
+ActivitySuccessBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= DataBindingUtil.setContentView(this,R.layout.activity_checkout);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_success);
         binding.placeOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),SuccessActivity.class));
+                navigateToCartFragment();
             }
         });
         binding.close.setOnClickListener(new View.OnClickListener() {
@@ -28,6 +30,12 @@ ActivityCheckoutBinding binding;
                 finish();
             }
         });
+    }
+    private void navigateToCartFragment() {
+
+        Intent intent = new Intent(SuccessActivity.this, HomeActivity.class);
+        intent.putExtra("FromReservation", "1");
+        startActivity(intent);
 
     }
 }

@@ -1,5 +1,6 @@
 package com.example.e_commerce.cart;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,12 @@ FragmentCartBinding binding;
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setRecentlyRecyclerView();
+        binding.checkoutBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),CheckoutActivity.class));
+            }
+        });
 
     }
     public void setRecentlyRecyclerView(){

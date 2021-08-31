@@ -37,25 +37,27 @@
         <TextView
             android:id="@+id/item_title"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_18sdp"
+            android:layout_height="wrap_content"
             android:textColor="#515C6F"
             android:textSize="@dimen/_15ssp"
             android:fontFamily="@font/neusa_next_std_bold"
             android:layout_marginStart="@dimen/_15sdp"
             app:layout_constraintStart_toEndOf="@+id/cardView2"
             app:layout_constraintTop_toTopOf="@+id/cardView2"
+            app:layout_constraintBottom_toTopOf="@id/item_details"
             android:text="@string/ankle_boots" />
 
         <TextView
             android:id="@+id/item_details"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_18sdp"
+            android:layout_height="wrap_content"
             android:textColor="#515C6F"
             android:textSize="@dimen/_15ssp"
             android:fontFamily="sans-serif-light"
             android:layout_marginStart="@dimen/_15sdp"
             app:layout_constraintStart_toEndOf="@+id/cardView2"
             app:layout_constraintTop_toBottomOf="@+id/item_title"
+            app:layout_constraintBottom_toTopOf="@id/product_price"
             android:text="@string/_7_hot_pink" />
 
         <TextView

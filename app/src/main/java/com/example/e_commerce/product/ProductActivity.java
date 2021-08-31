@@ -3,7 +3,6 @@ package com.example.e_commerce.product;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,16 +10,13 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-
 import com.example.e_commerce.ProductItems;
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.ActivityProductBinding;
 import com.example.e_commerce.home.HomeActivity;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 
 public class ProductActivity extends AppCompatActivity {
@@ -77,7 +73,6 @@ public class ProductActivity extends AppCompatActivity {
         binding.imageSlider.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
         binding.imageSlider.startAutoCycle();
     }
-
     private void navigateToCartFragment() {
 
         Intent intent = new Intent(ProductActivity.this, HomeActivity.class);
@@ -128,8 +123,5 @@ public class ProductActivity extends AppCompatActivity {
         adapter.AddFragment(new TabReviewsFragment(),"Reviews");
         binding.viewPager.setAdapter(adapter);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
-    }
-    private void addToCart(){
-
     }
 }
