@@ -76,4 +76,21 @@
     <string name="order_placed">Order Placed!</string>
     <string name="order_placed_text">Your order was placed successfully. For more details, check All My Orders page under Profile tab</string>
     <string name="my_orders">MY ORDERS</string>
+    <string name="currency">Currency</string>
+    <string name="usd">usd</string>
+    <string name="language">Language</string>
+    <string name="english">English</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="frequently_asked_questions">Frequently Asked Questions</string>
+    <string name="log_out">log out</string>
+    <string name="examble_email_com">examble@email.com</string>
+    <string name="edit_profile">edit profile</string>
+    <string name="all_my_orders">All My Orders</string>
+    <string name="pending_shipments">Pending Shipments</string>
+    <string name="pending_payments">Pending Payments</string>
+    <string name="finished_orders">Finished Orders</string>
+    <string name="invite_friends">Invite Friends</string>
+    <string name="customer_support">Customer Support</string>
+    <string name="rate_our_app">Rate Our App</string>
+    <string name="make_a_suggestion">Make a Suggestion</string>
 </resources>
