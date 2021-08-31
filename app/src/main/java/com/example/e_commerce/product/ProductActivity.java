@@ -12,10 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.e_commerce.ProductItems;
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.ActivityProductBinding;
 import com.example.e_commerce.home.HomeActivity;
-import com.example.e_commerce.home.ProductItems;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 
@@ -28,6 +28,7 @@ public class ProductActivity extends AppCompatActivity {
     TabAdapter adapter;
 
     ProductItems productItems;
+
     int[] image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,9 @@ public class ProductActivity extends AppCompatActivity {
         productItems = (ProductItems) getIntent().getSerializableExtra("productItems");
         image = new int[]{productItems.getImage(), productItems.getImage(), productItems.getImage()};
 
+        binding.productTitle.setText(productItems.getTitle());
+        binding.productPrice.setText(String.valueOf(productItems.getPrice()));
+        binding.ratingText.setText(String.valueOf(productItems.getRate()));
         binding.productTitle.setText(productItems.getTitle());
         binding.productPrice.setText(String.valueOf(productItems.getPrice()));
         binding.ratingText.setText(String.valueOf(productItems.getRate()));
@@ -124,5 +128,8 @@ public class ProductActivity extends AppCompatActivity {
         adapter.AddFragment(new TabReviewsFragment(),"Reviews");
         binding.viewPager.setAdapter(adapter);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
+    }
+    private void addToCart(){
+
     }
 }

@@ -3,6 +3,9 @@ package com.example.e_commerce.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,20 +15,15 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.os.Parcelable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
+import com.example.e_commerce.ProductItems;
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.FragmentHomeBinding;
 import com.example.e_commerce.product.ProductActivity;
-import com.example.e_commerce.search.RatedItems;
-
+import com.example.e_commerce.product.ProductInterface;
+import com.example.e_commerce.product.ProductsAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,7 +88,7 @@ public class HomeFragment extends Fragment {
         productItems.add(new ProductItems(R.drawable.backpack, R.string.back_pack, 20.58,3.7));
         productItems.add(new ProductItems(R.drawable.scarf, R.string.red_scarf, 11.00,4.9));
 
-        // ProductsAdapter productsAdapter = new ProductsAdapter( productItems, getContext());
+
         ProductsAdapter productsAdapter = new ProductsAdapter(productItems, getContext(), productInterface);
         binding.productRV.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
@@ -99,6 +97,7 @@ public class HomeFragment extends Fragment {
     }
 
     ProductInterface productInterface = new ProductInterface() {
+
         @Override
         public void onProductClick(ProductItems productItems) {
             Intent intent = new Intent(requireContext(), ProductActivity.class);
@@ -107,6 +106,7 @@ public class HomeFragment extends Fragment {
             intent.putExtras(bundle);
             startActivity(intent);
         }
+
 
     };
 }

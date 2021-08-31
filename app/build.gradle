@@ -52,6 +52,7 @@ dependencies {configuration->
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61"
 
+
     setupIntuit(configuration)
     setupNavigation(configuration)
     setupImageSlider(configuration)

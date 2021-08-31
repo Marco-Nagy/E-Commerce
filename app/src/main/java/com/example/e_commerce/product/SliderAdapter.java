@@ -1,14 +1,12 @@
 package com.example.e_commerce.product;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.databinding.DataBindingUtil;
 
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.SliderItemBinding;
-import com.example.e_commerce.home.ProductsAdapter;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
 public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderViewHolder> {

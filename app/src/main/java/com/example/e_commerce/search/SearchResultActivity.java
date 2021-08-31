@@ -4,17 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.e_commerce.ProductItems;
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.ActivitySearchResultBinding;
+import com.example.e_commerce.product.ProductActivity;
+import com.example.e_commerce.product.ProductInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchResultActivity extends AppCompatActivity {
     ActivitySearchResultBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +38,14 @@ public class SearchResultActivity extends AppCompatActivity {
     }
 
     public void setRecentlyRecyclerView() {
-        List<RatedItems> ratedItems = new ArrayList<>();
-        ratedItems.add(new RatedItems(R.drawable.v_neck_shirt_pink, R.string.v_neck_pi, 49.99, 4.1));
-        ratedItems.add(new RatedItems(R.drawable.v_neck_shirt_lim, R.string.v_neck_l, 49.99, 4.5));
-        ratedItems.add(new RatedItems(R.drawable.r_neck_shirt, R.string.r_neck, 11.00, 4.6));
-        ratedItems.add(new RatedItems(R.drawable.v_neck_polo, R.string.v_neck_p, 49.99, 4.9));
-        ratedItems.add(new RatedItems(R.drawable.image_11, R.string.r_neck_bas, 20.58, 3.9));
-        ratedItems.add(new RatedItems(R.drawable.image_12, R.string.chemise, 11.00, 3.5));
-        RatedAdapter ratedAdapter = new RatedAdapter(ratedItems, this);
+        List<ProductItems> productItems = new ArrayList<>();
+        productItems.add(new ProductItems(R.drawable.v_neck_shirt_pink, R.string.v_neck_pi, 49.99, 4.1));
+        productItems.add(new ProductItems(R.drawable.v_neck_shirt_lim, R.string.v_neck_l, 49.99, 4.5));
+        productItems.add(new ProductItems(R.drawable.r_neck_shirt, R.string.r_neck, 11.00, 4.6));
+        productItems.add(new ProductItems(R.drawable.v_neck_polo, R.string.v_neck_p, 49.99, 4.9));
+        productItems.add(new ProductItems(R.drawable.image_11, R.string.r_neck_bas, 20.58, 3.9));
+        productItems.add(new ProductItems(R.drawable.image_12, R.string.chemise, 11.00, 3.5));
+        RatedAdapter ratedAdapter = new RatedAdapter(productItems, this,productInterface);
         binding.searchRV.setLayoutManager(new GridLayoutManager(this, 2));
         binding.searchRV.setAdapter(ratedAdapter);
 
@@ -52,4 +57,16 @@ public class SearchResultActivity extends AppCompatActivity {
                 .commit();
 
     }
+    ProductInterface productInterface = new ProductInterface() {
+        @Override
+        public void onProductClick(ProductItems productItems) {
+            Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("productItems", productItems);
+            intent.putExtras(bundle);
+            startActivity(intent);
+
+        }
+
+    };
 }

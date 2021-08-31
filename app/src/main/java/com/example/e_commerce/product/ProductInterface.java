@@ -1,8 +1,11 @@
-package com.example.e_commerce.home;
+package com.example.e_commerce.product;
 
-import com.example.e_commerce.search.RatedItems;
+import com.example.e_commerce.ProductItems;
 
 public interface ProductInterface {
     void onProductClick(ProductItems productItems);
 
+
+
 }
+

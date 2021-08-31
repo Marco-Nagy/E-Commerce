@@ -9,7 +9,7 @@
 
         <variable
             name="item"
-            type="com.example.e_commerce.search.RatedItems" />
+            type="com.example.e_commerce.ProductItems" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

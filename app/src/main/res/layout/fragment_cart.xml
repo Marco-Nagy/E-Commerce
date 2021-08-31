@@ -1,21 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#F5F6F8"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".cart.CartFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
 
-    <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="@dimen/_150sdp"
-        android:src="@drawable/cart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    </data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#F5F6F8"
+        tools:context=".cart.CartFragment"
+        android:weightSum="6">
+
+        <TextView
+            android:id="@+id/categoryTextV"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".7"
+            android:background="@drawable/gradient_item_bg"
+            android:fontFamily="@font/neusa_next_std_bold"
+            android:padding="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:text="@string/cart"
+            android:textColor="#515C6F"
+            android:textSize="@dimen/_22ssp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cart_RV"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4.3"
+            app:layout_constraintTop_toBottomOf="@id/categoryTextV"
+            tools:listitem="@layout/cart_item"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="5"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/totalTextV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/neusa_next_std_bold"
+                android:padding="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:text="@string/total"
+                android:textColor="#80515C6F"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/amountTextV"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/amountTextV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/neusa_next_std_bold"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@string/_81_57"
+                android:textColor="#515C6F"
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/totalTextV" />
+
+            <TextView
+                android:id="@+id/shippingTextV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/neusa_regular"
+                android:padding="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:text="@string/free_domestic_shipping"
+                android:textColor="#727C8E"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/amountTextV"
+                app:layout_constraintTop_toBottomOf="@id/amountTextV" />
+
+            <TextView
+                android:layout_width="@dimen/_175sdp"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:background="@drawable/checkout_btn"
+                android:text="@string/checkout"
+                android:gravity="center"
+                android:elevation="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_20sdp"
+                android:textSize="@dimen/_12ssp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</layout>

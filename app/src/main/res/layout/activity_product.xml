@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.example.e_commerce.home.ProductItems" />
+            type="com.example.e_commerce.ProductItems" />
 
     </data>
 
@@ -160,7 +160,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight=".5"
-                android:layout_margin="@dimen/_8sdp"
                 app:tabIndicator="@drawable/group_20"
                 app:tabIndicatorAnimationMode="elastic"
                 app:tabIndicatorGravity="stretch"

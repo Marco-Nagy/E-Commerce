@@ -1,7 +1,6 @@
-package com.example.e_commerce.home;
+package com.example.e_commerce.product;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.e_commerce.MessagesActivity;
-import com.example.e_commerce.NotificationsActivity;
+import com.example.e_commerce.ProductItems;
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.ProductItemBinding;
 

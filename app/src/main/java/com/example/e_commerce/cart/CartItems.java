@@ -1,19 +1,17 @@
-package com.example.e_commerce.search;
+package com.example.e_commerce.cart;
 
 import java.io.Serializable;
 
-public class RatedItems implements Serializable {
+public class CartItems  {
 
     private int image;
     private int title;
     private double price;
-    private double rate;
 
-    public RatedItems(int image, int title, double price, double rate) {
+    public CartItems(int image, int title, double price) {
         this.image = image;
         this.title = title;
         this.price = price;
-        this.rate = rate;
     }
 
     public int getImage() {
@@ -38,13 +36,5 @@ public class RatedItems implements Serializable {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public double getRate() {
-        return rate;
-    }
-
-    public void setRate(double rate) {
-        this.rate = rate;
     }
 }
