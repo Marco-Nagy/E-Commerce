@@ -1,4 +1,4 @@
-package com.example.e_commerce.product;
+package com.example.e_commerce.shop;
 
 import android.os.Bundle;
 
@@ -15,7 +15,9 @@ import android.view.ViewGroup;
 import com.example.e_commerce.R;
 import com.example.e_commerce.ReviewItem;
 import com.example.e_commerce.ReviewsAdapter;
-import com.example.e_commerce.databinding.FragmentTabReviewsBinding;
+import com.example.e_commerce.databinding.FragmentShopReviewBinding;
+import com.example.e_commerce.messages.MessageItem;
+import com.example.e_commerce.messages.MessagesAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -23,15 +25,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TabReviewsFragment extends Fragment {
+public class ShopReviewFragment extends Fragment {
+    FragmentShopReviewBinding binding;
 
-FragmentTabReviewsBinding binding;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tab_reviews, container, false);
+        // Inflate the layout for this fragment
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shop_review, container, false);
         return binding.getRoot();
+
     }
 
     @Override
@@ -39,6 +44,7 @@ FragmentTabReviewsBinding binding;
         super.onViewCreated(view, savedInstanceState);
         setReviewsRecyclerView();
     }
+
     public void setReviewsRecyclerView() {
         List<ReviewItem> reviewItems = new ArrayList<>();
         reviewItems.add(new ReviewItem(R.string.jd,R.drawable.rating_3,"Jane Doe", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt","10 Oct, 2018"));
@@ -51,7 +57,7 @@ FragmentTabReviewsBinding binding;
         reviewItems.add(new ReviewItem(R.string.jd,R.drawable.rating_3,"Jane Doe", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt","10 Oct, 2018"));
         reviewItems.add(new ReviewItem(R.string.jd,R.drawable.rating_3,"Jane Doe", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt","10 Oct, 2018"));
 
-        ReviewsAdapter reviewsAdapter = new ReviewsAdapter(reviewItems, getContext());
+       ReviewsAdapter reviewsAdapter = new ReviewsAdapter(reviewItems, getContext());
         binding.reviewRV.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false));
         binding.reviewRV.setAdapter(reviewsAdapter);

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F6F7F9"
+        android:orientation="vertical"
+        tools:context=".shop.ShopActivity">
+
+
+        <TextView
+            android:id="@+id/latestTextV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/neusa_next_std_bold"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:text="@string/trending"
+            android:textColor="#515C6F"
+            android:textSize="@dimen/_30ssp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/latest_RV"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_184sdp"
+            android:background="#F5F6F8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/latestTextV"
+            tools:listitem="@layout/latest_item" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/product_RV"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#F5F6F8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/latest_RV"
+            tools:listitem="@layout/product_item" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

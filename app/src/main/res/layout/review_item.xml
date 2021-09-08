@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.example.e_commerce.ReviewItem" />
+    </data>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="#F6F7F9"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_margin="@dimen/_15sdp"
+                android:background="@color/white"
+                android:elevation="@dimen/_3sdp"
+                app:cardCornerRadius="@dimen/_50sdp"
+                app:layout_constraintCircleRadius="@dimen/_20sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/image_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#B7E6E6"
+                    android:gravity="center"
+                    android:padding="@dimen/_15sdp"
+                    android:text="@{item.image}"
+                    android:textColor="#85CBCB"
+                    android:textSize="@dimen/_22ssp"
+                    android:textStyle="bold"
+                    tools:text="JD" />
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/rate_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rating_3"
+                app:layout_constraintStart_toStartOf="@+id/shop_name"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/shop_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/neusa_next_std_bold"
+                android:text="@{item.name}"
+                android:textColor="#515C6F"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintBottom_toTopOf="@id/message_bodt"
+                app:layout_constraintStart_toEndOf="@+id/cardView2"
+                app:layout_constraintTop_toBottomOf="@id/rate_image"
+                tools:text="Jane Doe" />
+
+            <TextView
+                android:id="@+id/message_bodt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="sans-serif-light"
+                android:maxWidth="@dimen/_194sdp"
+                android:maxLines="2"
+                android:text="@{item.body}"
+                android:textColor="#515C6F"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintStart_toEndOf="@+id/cardView2"
+                app:layout_constraintTop_toBottomOf="@+id/shop_name"
+                tools:text="@string/message_body" />
+
+            <TextView
+                android:id="@+id/message_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:elevation="@dimen/_6sdp"
+                android:fontFamily="@font/neusa_next_std_bold"
+                android:text="@{item.date}"
+                android:textColor="#80515C6F"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="10 Oct, 2018"
+                tools:textSize="@dimen/_12ssp" />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_margin="@dimen/_15sdp"
+                android:background="#1A515C6F"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardView2"
+                app:layout_constraintTop_toBottomOf="@+id/message_bodt" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

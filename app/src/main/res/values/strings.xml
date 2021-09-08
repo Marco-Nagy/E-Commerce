@@ -32,6 +32,15 @@
     <string name="see_more">See more</string>
     <string name="summer_clothes">For all your summer clothing needs</string>
     <string name="ankle_boots">Ankle Boots</string>
+    <string name="cotton_dress">Cotton Dress</string>
+    <string name="pattern_dress">Pattern Dress</string>
+    <string name="floral_dress">floral Dress</string>
+    <string name="yellow_bag">JJ’s Backpack</string>
+    <string name="blue_bag">Armor Blu</string>
+    <string name="green_bag">Action Sports</string>
+    <string name="grey_jacket">Grey Jacket</string>
+    <string name="red_jacket">Faux Sued Ja…</string>
+    <string name="blue_jacket">Blue &amp; Whit…</string>
     <string name="back_pack">Back pack</string>
     <string name="red_scarf">Red Scarf</string>
     <string name="_49_99">$49.99</string>
@@ -93,4 +102,13 @@
     <string name="customer_support">Customer Support</string>
     <string name="rate_our_app">Rate Our App</string>
     <string name="make_a_suggestion">Make a Suggestion</string>
+    <string name="ss">SS</string>
+    <string name="message_body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</string>
+    <string name="smiley_s_store">Smiley’s Store</string>
+    <string name="active">Active</string>
+    <string name="type_your_message">Type your message...</string>
+    <string name="trending">Trending</string>
+    <string name="bags">Bags</string>
+    <string name="jackets">Jackets</string>
+    <string name="jd">JD</string>
 </resources>

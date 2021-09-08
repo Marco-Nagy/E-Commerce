@@ -1,4 +1,4 @@
-package com.example.e_commerce;
+package com.example.e_commerce.authentecation;
 
 import android.os.Bundle;
 
@@ -12,6 +12,8 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.FragmentForgotPasswordBinding;
 
 import org.jetbrains.annotations.NotNull;

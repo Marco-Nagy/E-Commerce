@@ -1,6 +1,8 @@
 package com.example.e_commerce.home;
+
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentTransaction;
@@ -8,12 +10,11 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.e_commerce.MessagesActivity;
 import com.example.e_commerce.NotificationsActivity;
 import com.example.e_commerce.R;
 import com.example.e_commerce.cart.CartFragment;
 import com.example.e_commerce.databinding.ActivityHomeBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.e_commerce.messages.MessagesActivity;
 
 public class HomeActivity extends AppCompatActivity {
 ActivityHomeBinding binding;

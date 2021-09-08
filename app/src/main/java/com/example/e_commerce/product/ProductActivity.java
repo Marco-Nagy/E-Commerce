@@ -80,7 +80,7 @@ public class ProductActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
-    private static class TabAdapter extends FragmentPagerAdapter{
+    public static class TabAdapter extends FragmentPagerAdapter{
         ArrayList<Fragment> fragmentArrayList =new ArrayList<>();
         ArrayList<String> stringArrayList =new ArrayList<>();
         public void AddFragment(Fragment fragment ,String string){
