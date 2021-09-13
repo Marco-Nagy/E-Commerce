@@ -38,6 +38,7 @@ FragmentTabProductBinding binding;
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setColorRecyclerView();
+        setSizeRecyclerView();
     }
     public void setColorRecyclerView() {
         List<ColorItem> colorItems = new ArrayList<>();
@@ -55,6 +56,25 @@ FragmentTabProductBinding binding;
         binding.selectColorRV.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
         binding.selectColorRV.setAdapter(colorAdapter);
+
+
+    }
+    public void setSizeRecyclerView() {
+        List<SizeItem> sizeItems = new ArrayList<>();
+        sizeItems.add(new SizeItem("4.0"));
+        sizeItems.add(new SizeItem("4.5"));
+        sizeItems.add(new SizeItem("5.0"));
+        sizeItems.add(new SizeItem("5.5"));
+        sizeItems.add(new SizeItem("6.0"));
+        sizeItems.add(new SizeItem("6.5"));
+        sizeItems.add(new SizeItem("7.0"));
+        sizeItems.add(new SizeItem("7.5"));
+        sizeItems.add(new SizeItem("8.0"));
+        sizeItems.add(new SizeItem("8.5"));
+        SizeAdapter sizeAdapter = new SizeAdapter(getContext(),sizeItems );
+        binding.selectSizeRV.setLayoutManager(new LinearLayoutManager(getContext(),
+                LinearLayoutManager.HORIZONTAL, false));
+        binding.selectSizeRV.setAdapter(sizeAdapter);
 
 
     }

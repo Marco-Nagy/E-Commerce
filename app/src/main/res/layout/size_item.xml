@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.example.e_commerce.product.SizeItem" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#F5F6F8">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/size_btn"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:elevation="@dimen/_3sdp"
+            android:src="@drawable/_5"
+            android:layout_margin="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:fadingEdgeLength="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/size_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/_4sdp"
+            android:gravity="center_vertical"
+            android:text="6.5"
+            android:textColor="#727C8E"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/_6sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/size_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/size_btn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -20,6 +20,7 @@
             android:layout_height="@dimen/_60sdp"
             android:layout_margin="@dimen/_8sdp"
             android:elevation="@dimen/_3sdp"
+            tools:src="@color/rose"
             app:cardCornerRadius="@dimen/_30sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +38,6 @@
             android:elevation="@dimen/_4sdp"
             app:layout_constraintBottom_toBottomOf="@+id/color_cardView"
             app:layout_constraintEnd_toEndOf="@+id/color_cardView"
-
             app:layout_constraintTop_toTopOf="@+id/color_cardView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.ColorItemBinding;
-import com.example.e_commerce.notification.NotificationItem;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -22,7 +20,7 @@ import java.util.List;
 public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ColorViewHolder> {
 private Context context;
 private List<ColorItem> colorItems;
-public static int checkedPosition =0;
+public static int checkedPosition =-1;
 
     public ColorAdapter(Context context, List<ColorItem> colorItems) {
         this.context = context;
@@ -50,7 +48,6 @@ public static int checkedPosition =0;
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ColorAdapter.ColorViewHolder holder, int position) {
-        getSelectedColor();
         holder.bind(colorItems.get(position));
         holder.binding.colorCardView.setImageResource(getItemsColor(colorItems.get(position)));
         holder.itemView.setOnClickListener(v -> {
@@ -58,6 +55,8 @@ public static int checkedPosition =0;
            if (checkedPosition != holder.getAdapterPosition()){
                notifyItemChanged(checkedPosition);
                checkedPosition = holder.getAdapterPosition();
+           }else if(checkedPosition == holder.getAdapterPosition()){
+               notifyItemChanged(checkedPosition);
            }
         });
     }
@@ -74,7 +73,7 @@ public static int checkedPosition =0;
             super(binding.getRoot());
             this.binding = binding;
         }
-        void bind(final ColorItem colorItem){
+        void bind( ColorItem colorItem){
             if (checkedPosition==-1){
                 binding.imageCheck.setVisibility(View.GONE);
             }else if(checkedPosition== getAdapterPosition()){

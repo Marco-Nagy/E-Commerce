@@ -184,18 +184,20 @@
         <ImageButton
             android:id="@+id/shareThis_Btn"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="@dimen/_165sdp"
+            android:layout_width="@dimen/_155sdp"
             android:layout_height="wrap_content"
             android:background="#F5F6F8"
             android:elevation="@dimen/_3sdp"
             android:src="@drawable/share_this"
+            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/addCart_Btn"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
             android:id="@+id/addCart_Btn"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="@dimen/_165sdp"
+            android:layout_width="@dimen/_155sdp"
             android:layout_height="wrap_content"
             android:background="#F5F6F8"
             android:elevation="@dimen/_3sdp"
