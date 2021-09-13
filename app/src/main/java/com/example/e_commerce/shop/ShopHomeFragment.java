@@ -14,11 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.e_commerce.ProductItems;
+import com.example.e_commerce.product.ProductItems;
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.FragmentShopHomeBinding;
-import com.example.e_commerce.home.CategoriesAdapter;
-import com.example.e_commerce.home.CategoryItems;
 import com.example.e_commerce.home.LatestAdapter;
 import com.example.e_commerce.home.LatestItems;
 import com.example.e_commerce.product.ProductActivity;

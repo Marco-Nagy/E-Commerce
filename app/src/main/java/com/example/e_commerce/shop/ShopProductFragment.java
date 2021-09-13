@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.e_commerce.ProductItems;
+import com.example.e_commerce.product.ProductItems;
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.FragmentShopProductBinding;
 import com.example.e_commerce.product.ProductActivity;

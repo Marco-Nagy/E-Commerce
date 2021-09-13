@@ -1,18 +1,18 @@
 package com.example.e_commerce.search;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.GridLayoutManager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.e_commerce.ProductItems;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.GridLayoutManager;
+
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.ActivitySearchResultBinding;
 import com.example.e_commerce.product.ProductActivity;
 import com.example.e_commerce.product.ProductInterface;
+import com.example.e_commerce.product.ProductItems;
 
 import java.util.ArrayList;
 import java.util.List;

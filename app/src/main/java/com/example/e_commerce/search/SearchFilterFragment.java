@@ -30,6 +30,7 @@ public class SearchFilterFragment extends DialogFragment {
                 params.width = WindowManager.LayoutParams.WRAP_CONTENT;
                 params.height = WindowManager.LayoutParams.WRAP_CONTENT;
                 params.horizontalMargin = 15;
+                params.verticalMargin= 0.05f;
                 params.gravity = gravity;
                 params.dimAmount = 0;
                 params.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;

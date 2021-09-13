@@ -13,11 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.e_commerce.R;
-import com.example.e_commerce.ReviewItem;
-import com.example.e_commerce.ReviewsAdapter;
+import com.example.e_commerce.review.ReviewItem;
+import com.example.e_commerce.review.ReviewsAdapter;
 import com.example.e_commerce.databinding.FragmentShopReviewBinding;
-import com.example.e_commerce.messages.MessageItem;
-import com.example.e_commerce.messages.MessagesAdapter;
 
 import org.jetbrains.annotations.NotNull;
 

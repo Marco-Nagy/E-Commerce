@@ -10,7 +10,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.e_commerce.NotificationsActivity;
+import com.example.e_commerce.notification.NotificationsActivity;
 import com.example.e_commerce.R;
 import com.example.e_commerce.cart.CartFragment;
 import com.example.e_commerce.databinding.ActivityHomeBinding;

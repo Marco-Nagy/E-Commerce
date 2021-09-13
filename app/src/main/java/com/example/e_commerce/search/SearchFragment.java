@@ -12,9 +12,10 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.e_commerce.ProductItems;
+
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.FragmentSearchBinding;
+import com.example.e_commerce.product.ProductItems;
 
 
 import org.jetbrains.annotations.NotNull;

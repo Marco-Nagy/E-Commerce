@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F5F6F8"
-        tools:context=".NotificationsActivity">
+        tools:context=".notification.NotificationsActivity">
 
         <TextView
-            android:id="@+id/allCategories_TextV"
+            android:id="@+id/notifications_TextV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/neusa_next_std_bold"
@@ -35,9 +35,18 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:background="#F6F7F9"
             android:src="@drawable/close"
-            app:layout_constraintBottom_toTopOf="@+id/allCategories_TextV"
+            app:layout_constraintBottom_toTopOf="@+id/notifications_TextV"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/notification_RV"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notifications_TextV"
+            tools:listitem="@layout/notification_item" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

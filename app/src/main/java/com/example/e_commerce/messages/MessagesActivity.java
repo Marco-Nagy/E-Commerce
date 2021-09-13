@@ -2,17 +2,14 @@ package com.example.e_commerce.messages;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.e_commerce.ProductItems;
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.ActivityMessagesBinding;
-import com.example.e_commerce.search.RatedAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

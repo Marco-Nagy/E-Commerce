@@ -4,18 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.e_commerce.ProductItems;
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.MessageItemBinding;
-import com.example.e_commerce.databinding.RatedItemBinding;
-import com.example.e_commerce.product.ProductInterface;
-import com.example.e_commerce.search.RatedAdapter;
 
 import org.jetbrains.annotations.NotNull;
 

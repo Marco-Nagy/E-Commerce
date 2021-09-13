@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -14,16 +13,13 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import com.example.e_commerce.ProductItems;
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.FragmentHomeBinding;
 import com.example.e_commerce.product.ProductActivity;
 import com.example.e_commerce.product.ProductInterface;
+import com.example.e_commerce.product.ProductItems;
 import com.example.e_commerce.product.ProductsAdapter;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,18 +92,12 @@ public class HomeFragment extends Fragment {
 
     }
 
-    ProductInterface productInterface = new ProductInterface() {
-
-        @Override
-        public void onProductClick(ProductItems productItems) {
-            Intent intent = new Intent(requireContext(), ProductActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("productItems", productItems);
-            intent.putExtras(bundle);
-            startActivity(intent);
-        }
-
-
+    ProductInterface productInterface = productItems -> {
+        Intent intent = new Intent(requireContext(), ProductActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("productItems", productItems);
+        intent.putExtras(bundle);
+        startActivity(intent);
     };
 }
 

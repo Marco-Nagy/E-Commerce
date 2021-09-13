@@ -9,10 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.e_commerce.ProductItems;
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.RatedItemBinding;
 import com.example.e_commerce.product.ProductInterface;
+import com.example.e_commerce.product.ProductItems;
 
 
 import org.jetbrains.annotations.NotNull;

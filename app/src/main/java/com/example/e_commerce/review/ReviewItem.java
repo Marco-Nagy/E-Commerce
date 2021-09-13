@@ -1,4 +1,4 @@
-package com.example.e_commerce;
+package com.example.e_commerce.review;
 
 public class ReviewItem {
     int Image;

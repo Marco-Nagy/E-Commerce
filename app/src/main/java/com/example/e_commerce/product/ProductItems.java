@@ -1,4 +1,4 @@
-package com.example.e_commerce;
+package com.example.e_commerce.product;
 
 import java.io.Serializable;
 

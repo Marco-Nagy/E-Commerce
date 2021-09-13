@@ -111,4 +111,13 @@
     <string name="bags">Bags</string>
     <string name="jackets">Jackets</string>
     <string name="jd">JD</string>
+    <string name="select_color">SELECT COLOR</string>
+    <string name="select_size_us">SELECT SIZE (US)</string>
+    <string name="sku">SKU</string>
+    <string name="lily_s_ankle_boots">Lily’s Ankle Boots</string>
+    <string name="condition">CONDITION</string>
+    <string name="material">MATERIAL</string>
+    <string name="women_shoes">Women Shoes</string>
+    <string name="fitting">FITTING</string>
+    <string name="true_to_size">True To Size</string>
 </resources>

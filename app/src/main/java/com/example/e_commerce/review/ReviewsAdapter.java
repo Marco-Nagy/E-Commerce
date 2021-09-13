@@ -1,19 +1,15 @@
-package com.example.e_commerce;
+package com.example.e_commerce.review;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.e_commerce.databinding.MessageItemBinding;
+import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.ReviewItemBinding;
-import com.example.e_commerce.messages.MessageInterface;
-import com.example.e_commerce.messages.MessageItem;
-import com.example.e_commerce.search.RecentlyAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
