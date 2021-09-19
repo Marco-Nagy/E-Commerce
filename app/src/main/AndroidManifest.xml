@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.e_commerce">
+    package="com.marconagy.e_commerce">
 
     <application
         android:allowBackup="true"
@@ -9,19 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ECommerce">
-        <activity android:name=".shop.ShopActivity"></activity>
-        <activity android:name=".messages.ConversationActivity" />
-        <activity android:name=".cart.SuccessActivity" />
-        <activity android:name=".cart.CheckoutActivity" />
+        <activity android:name="com.marconagy.e_commerce.shop.ShopActivity"></activity>
+        <activity android:name="com.marconagy.e_commerce.messages.ConversationActivity" />
+        <activity android:name="com.marconagy.e_commerce.cart.SuccessActivity" />
+        <activity android:name="com.marconagy.e_commerce.cart.CheckoutActivity" />
         <activity
-            android:name=".product.ProductActivity"
+            android:name="com.marconagy.e_commerce.product.ProductActivity"
             android:label="@string/title_activity_product"
             android:theme="@style/Theme.ECommerce.NoActionBar" />
-        <activity android:name=".search.SearchResultActivity" />
-        <activity android:name=".messages.MessagesActivity" />
-        <activity android:name=".notification.NotificationsActivity" />
-        <activity android:name=".home.HomeActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.marconagy.e_commerce.search.SearchResultActivity" />
+        <activity android:name="com.marconagy.e_commerce.messages.MessagesActivity" />
+        <activity android:name="com.marconagy.e_commerce.notification.NotificationsActivity" />
+        <activity android:name="com.marconagy.e_commerce.home.HomeActivity" />
+        <activity android:name="com.marconagy.e_commerce.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

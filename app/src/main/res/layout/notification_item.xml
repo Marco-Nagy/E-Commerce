@@ -6,7 +6,7 @@
     <data>
         <variable
             name="item"
-            type="com.example.e_commerce.notification.NotificationItem" />
+            type="com.marconagy.e_commerce.notification.NotificationItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

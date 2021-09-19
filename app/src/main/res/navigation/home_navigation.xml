@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.e_commerce.home.HomeFragment"
+        android:name="com.marconagy.e_commerce.home.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
 
     </fragment>
     <fragment
         android:id="@+id/navigation_more"
-        android:name="com.example.e_commerce.MoreFragment"
+        android:name="com.marconagy.e_commerce.MoreFragment"
         android:label="fragment_more"
         tools:layout="@layout/fragment_more" />
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.example.e_commerce.search.SearchFragment"
+        android:name="com.marconagy.e_commerce.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -28,17 +28,17 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_cart"
-        android:name="com.example.e_commerce.cart.CartFragment"
+        android:name="com.marconagy.e_commerce.cart.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.e_commerce.ProfileFragment"
+        android:name="com.marconagy.e_commerce.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/searchResultFragment"
-        android:name="com.example.e_commerce.search.SearchResultFragment"
+        android:name="com.marconagy.e_commerce.search.SearchResultFragment"
         android:label="fragment_search_result"
         tools:layout="@layout/fragment_search_result" >
         <action
@@ -47,7 +47,7 @@
     </fragment>
     <dialog
         android:id="@+id/searchFilterFragment"
-        android:name="com.example.e_commerce.search.SearchFilterFragment"
+        android:name="com.marconagy.e_commerce.search.SearchFilterFragment"
         android:label="fragment_search_filter"
         tools:layout="@layout/fragment_search_filter" >
         <action

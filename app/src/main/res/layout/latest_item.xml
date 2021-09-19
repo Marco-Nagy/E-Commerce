@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.example.e_commerce.home.LatestItems" />
+            type="com.marconagy.e_commerce.home.LatestItems" />
 
     </data>
 

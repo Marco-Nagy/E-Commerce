@@ -6,7 +6,7 @@
     app:startDestination="@id/signUp_Fragment">
     <fragment
         android:id="@+id/signUp_Fragment"
-        android:name="com.example.e_commerce.authentecation.SignUpFragment"
+        android:name="com.marconagy.e_commerce.authentecation.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.example.e_commerce.authentecation.ForgotPasswordFragment"
+        android:name="com.marconagy.e_commerce.authentecation.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" >
         <action
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/logInFragment"
-        android:name="com.example.e_commerce.authentecation.LogInFragment"
+        android:name="com.marconagy.e_commerce.authentecation.LogInFragment"
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_log_in" >
         <action
@@ -42,7 +42,7 @@
     </fragment>
     <activity
         android:id="@+id/homeActivity"
-        android:name="com.example.e_commerce.home.HomeActivity"
+        android:name="com.marconagy.e_commerce.home.HomeActivity"
         android:label="HomeActivity"
         tools:layout="@layout/activity_home">
     </activity>

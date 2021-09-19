@@ -9,7 +9,7 @@
 
         <variable
             name="item"
-            type="com.example.e_commerce.product.ProductItems" />
+            type="com.marconagy.e_commerce.product.ProductItems" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
