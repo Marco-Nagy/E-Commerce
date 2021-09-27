@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="signup"
+            type="com.marco_nagy.e_commerce.authentecation.signup.SignupRequest" />
 
     </data>
 
@@ -78,18 +81,19 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/email_signUp"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
                     app:hintTextColor="@color/purple_500"
-
                     android:textAllCaps="true"
                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconDrawable="@drawable/_01_mail">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/email_ET_signUp"
                         android:layout_width="match_parent"
+                        android:text="@={signup.email}"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:fontFamily="@font/neusa_regular"
@@ -97,7 +101,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/userName_ET_SignUp"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/username"
@@ -107,8 +111,11 @@
                     app:startIconDrawable="@drawable/profile">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/userName_ET_SignUp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+
+                        android:text="@={signup.name}"
                         android:background="@color/white"
                         android:fontFamily="@font/neusa_regular"
                         android:inputType="textAutoComplete"
@@ -117,7 +124,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/filledTextField"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
@@ -127,9 +134,33 @@
                     app:startIconDrawable="@drawable/_02_password">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/password_ET_SignUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={signup.password}"
+                        android:background="@color/white"
+                        android:fontFamily="@font/neusa_regular"
+                        android:inputType="textPassword"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="20" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/confirm_password"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:endIconMode="password_toggle"
+                    app:hintTextColor="@color/purple_500"
+                    app:startIconDrawable="@drawable/_02_password">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/confirmPassword_ET_SignUp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
+
+                        android:text="@={signup.confirmPassword}"
                         android:fontFamily="@font/neusa_regular"
                         android:inputType="textPassword"
                         app:counterEnabled="true"
@@ -172,7 +203,6 @@
                 app:layout_constraintStart_toStartOf="@+id/signUp_Btn"
                 app:layout_constraintTop_toTopOf="@+id/signUp_Btn" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </LinearLayout>
 </layout>

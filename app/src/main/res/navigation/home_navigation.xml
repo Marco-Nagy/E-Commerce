@@ -7,53 +7,33 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.marconagy.e_commerce.home.HomeFragment"
+        android:name="com.marco_nagy.e_commerce.home.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
 
     </fragment>
     <fragment
         android:id="@+id/navigation_more"
-        android:name="com.marconagy.e_commerce.MoreFragment"
+        android:name="com.marco_nagy.e_commerce.MoreFragment"
         android:label="fragment_more"
         tools:layout="@layout/fragment_more" />
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.marconagy.e_commerce.search.SearchFragment"
+        android:name="com.marco_nagy.e_commerce.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
-        <action
-            android:id="@+id/action_navigation_search_to_searchResultFragment"
-            app:destination="@id/searchResultFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_cart"
-        android:name="com.marconagy.e_commerce.cart.CartFragment"
+        android:name="com.marco_nagy.e_commerce.cart.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.marconagy.e_commerce.ProfileFragment"
+        android:name="com.marco_nagy.e_commerce.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
-    <fragment
-        android:id="@+id/searchResultFragment"
-        android:name="com.marconagy.e_commerce.search.SearchResultFragment"
-        android:label="fragment_search_result"
-        tools:layout="@layout/fragment_search_result" >
-        <action
-            android:id="@+id/action_searchResultFragment_to_searchFilterFragment"
-            app:destination="@id/searchFilterFragment" />
-    </fragment>
-    <dialog
-        android:id="@+id/searchFilterFragment"
-        android:name="com.marconagy.e_commerce.search.SearchFilterFragment"
-        android:label="fragment_search_filter"
-        tools:layout="@layout/fragment_search_filter" >
-        <action
-            android:id="@+id/action_searchFilterFragment_to_searchResultFragment"
-            app:destination="@id/searchResultFragment" />
-    </dialog>
+
 
 
 </navigation>

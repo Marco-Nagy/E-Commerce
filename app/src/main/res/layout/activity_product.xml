@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.marconagy.e_commerce.product.ProductItems" />
+          type="com.marco_nagy.e_commerce.product.ProductItems" />
 
     </data>
 
