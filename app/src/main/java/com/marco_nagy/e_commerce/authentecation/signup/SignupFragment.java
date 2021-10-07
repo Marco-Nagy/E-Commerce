@@ -16,9 +16,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.google.gson.Gson;
-import com.marco_nagy.e_commerce.MainActivity;
 import com.marco_nagy.e_commerce.R;
-import com.marco_nagy.e_commerce.authentecation.login.LoginResponseError;
 import com.marco_nagy.e_commerce.data.AppNetworkBuilder;
 import com.marco_nagy.e_commerce.databinding.FragmentSignUpBinding;
 

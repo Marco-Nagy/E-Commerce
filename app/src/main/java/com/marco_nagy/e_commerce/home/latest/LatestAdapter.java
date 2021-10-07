@@ -1,4 +1,4 @@
-package com.marco_nagy.e_commerce.home;
+package com.marco_nagy.e_commerce.home.latest;
 
 import android.content.Context;
 import android.view.LayoutInflater;

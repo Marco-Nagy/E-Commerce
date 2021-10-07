@@ -1,4 +1,6 @@
-package com.marco_nagy.e_commerce.home;
+package com.marco_nagy.e_commerce.home.latest;
+
+import com.marco_nagy.e_commerce.home.CategoryItems;
 
 public class LatestItems extends CategoryItems {
     private int image;

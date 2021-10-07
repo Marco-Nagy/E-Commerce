@@ -96,8 +96,6 @@ public class LogInFragment extends Fragment {
                     Toast.makeText(getContext(), "Welcome", Toast.LENGTH_SHORT).show();
                     Log.i(TAG, "onResponse: "+response.headers().toString());
                     navController.navigate(R.id.action_logInFragment_to_homeActivity);
-
-
                 }
             }
 
