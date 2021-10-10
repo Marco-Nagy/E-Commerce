@@ -3,6 +3,7 @@ package com.marco_nagy.e_commerce.product;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,9 +16,12 @@ import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.databinding.ActivityProductBinding;
 import com.marco_nagy.e_commerce.home.HomeActivity;
 import com.marco_nagy.e_commerce.home.latest.LatestProduct;
+import com.marco_nagy.e_commerce.home.latest.LatestProductInterface;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
+
 import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 public class ProductActivity extends AppCompatActivity {
@@ -26,23 +30,29 @@ public class ProductActivity extends AppCompatActivity {
 
     ProductItems productItems;
     LatestProduct latestProduct;
+    LatestProductInterface latestProductInterface;
 
     int[] image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product);
-
+        latestProductInterface.onLatestProductClick(latestProduct);
         productItems = (ProductItems) getIntent().getSerializableExtra("productItems");
-         latestProduct= (LatestProduct) getIntent().getSerializableExtra("latestProduct");
+        latestProduct = (LatestProduct) getIntent().getSerializableExtra("latestProduct");
+
         image = new int[]{productItems.getImage(), productItems.getImage(), productItems.getImage()};
 
+
         binding.productTitle.setText(productItems.getTitle());
         binding.productPrice.setText(String.valueOf(productItems.getPrice()));
         binding.ratingText.setText(String.valueOf(productItems.getRate()));
-        binding.productTitle.setText(productItems.getTitle());
-        binding.productPrice.setText(String.valueOf(productItems.getPrice()));
-        binding.ratingText.setText(String.valueOf(productItems.getRate()));
+
+        binding.productTitle.setText(latestProduct.getName());
+        binding.productPrice.setText(String.valueOf(latestProduct.getPrice()));
+        //binding.ratingText.setText(String.valueOf(latestProduct.get));
+
         binding.cartBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -68,7 +78,8 @@ public class ProductActivity extends AppCompatActivity {
         setImageSlider();
         setTabLayout();
     }
-    private void setImageSlider(){
+
+    private void setImageSlider() {
 
         SliderAdapter sliderAdapter = new SliderAdapter(image);
         binding.imageSlider.setSliderAdapter(sliderAdapter);
@@ -76,6 +87,7 @@ public class ProductActivity extends AppCompatActivity {
         binding.imageSlider.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
         binding.imageSlider.startAutoCycle();
     }
+
     private void navigateToCartFragment() {
 
         Intent intent = new Intent(ProductActivity.this, HomeActivity.class);
@@ -83,10 +95,12 @@ public class ProductActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
-    public static class TabAdapter extends FragmentPagerAdapter{
-        ArrayList<Fragment> fragmentArrayList =new ArrayList<>();
-        ArrayList<String> stringArrayList =new ArrayList<>();
-        public void AddFragment(Fragment fragment ,String string){
+
+    public static class TabAdapter extends FragmentPagerAdapter {
+        ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
+        ArrayList<String> stringArrayList = new ArrayList<>();
+
+        public void AddFragment(Fragment fragment, String string) {
             fragmentArrayList.add(fragment);
             stringArrayList.add(string);
 
@@ -119,11 +133,12 @@ public class ProductActivity extends AppCompatActivity {
             return stringArrayList.get(position);
         }
     }
-    private void setTabLayout(){
+
+    private void setTabLayout() {
         adapter = new TabAdapter(getSupportFragmentManager());
-        adapter.AddFragment(new TabProductFragment(),"Product");
-        adapter.AddFragment(new TabDetailsFragment(),"Details");
-        adapter.AddFragment(new TabReviewsFragment(),"Reviews");
+        adapter.AddFragment(new TabProductFragment(), "Product");
+        adapter.AddFragment(new TabDetailsFragment(), "Details");
+        adapter.AddFragment(new TabReviewsFragment(), "Reviews");
         binding.viewPager.setAdapter(adapter);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
     }
