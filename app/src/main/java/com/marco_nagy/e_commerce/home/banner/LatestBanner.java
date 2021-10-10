@@ -1,12 +1,10 @@
-package com.marco_nagy.e_commerce.home.latest;
+package com.marco_nagy.e_commerce.home.banner;
 
-import com.marco_nagy.e_commerce.home.CategoryItems;
-
-public class LatestItems extends CategoryItems {
+public class LatestBanner {
     private int image;
     private int title;
 
-    public LatestItems(int image, int title) {
+    public LatestBanner(int image, int title) {
 
         this.image = image;
         this.title = title;

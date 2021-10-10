@@ -1,11 +1,17 @@
 
 package com.marco_nagy.e_commerce.home.latest;
 
-import java.io.Serializable;
+import android.widget.ImageView;
 
+import androidx.databinding.BindingAdapter;
+
+import com.bumptech.glide.Glide;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-public class Datum implements Serializable
+import com.marco_nagy.e_commerce.R;
+
+import java.io.Serializable;
+public class LatestProduct implements Serializable
 {
 
     @SerializedName("id")
@@ -141,5 +147,15 @@ public class Datum implements Serializable
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
+    @BindingAdapter({"glide"})
+    public static void setImageUrl(ImageView imageView, String urlToImage){
 
+        Glide
+                .with(imageView)
+                .load(urlToImage)
+                .centerCrop()
+                .placeholder(R.drawable.backpack)
+                .into(imageView);
+
+    }
 }

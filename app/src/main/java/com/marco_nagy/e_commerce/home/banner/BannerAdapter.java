@@ -1,4 +1,4 @@
-package com.marco_nagy.e_commerce.home.latest;
+package com.marco_nagy.e_commerce.home.banner;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,16 +16,16 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.LatestViewHolder> {
-    List<LatestItems> latestItems;
+public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.LatestViewHolder> {
+    List<LatestBanner> latestItems;
     Context context;
 
-    public LatestAdapter(List<LatestItems> latestItems, Context context) {
+    public BannerAdapter(List<LatestBanner> latestItems, Context context) {
         this.latestItems = latestItems;
         this.context = context;
     }
 
-    public int getItemsImage(LatestItems image) {
+    public int getItemsImage(LatestBanner image) {
         return image.getImage();
     }
 
@@ -38,7 +38,7 @@ public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.LatestView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull LatestAdapter.LatestViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull BannerAdapter.LatestViewHolder holder, int position) {
         holder.binding.setItem(latestItems.get(position));
         holder.binding.latestImage.setImageResource(getItemsImage(latestItems.get(position)));
         holder.binding.seeMoreBtn.setImageResource(R.drawable.see_more);

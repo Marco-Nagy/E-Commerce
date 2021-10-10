@@ -1,4 +1,4 @@
-package com.marco_nagy.e_commerce.home;
+package com.marco_nagy.e_commerce.home.category;
 
 public class CategoryItems {
 private int image;

@@ -2,6 +2,9 @@ package com.marco_nagy.e_commerce.shop;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,17 +13,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.marco_nagy.e_commerce.product.ProductItems;
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.databinding.FragmentShopHomeBinding;
-import com.marco_nagy.e_commerce.home.latest.LatestAdapter;
-import com.marco_nagy.e_commerce.home.latest.LatestItems;
+import com.marco_nagy.e_commerce.home.banner.BannerAdapter;
+import com.marco_nagy.e_commerce.home.banner.LatestBanner;
 import com.marco_nagy.e_commerce.product.ProductActivity;
 import com.marco_nagy.e_commerce.product.ProductInterface;
+import com.marco_nagy.e_commerce.product.ProductItems;
 import com.marco_nagy.e_commerce.product.ProductsAdapter;
 
 import org.jetbrains.annotations.NotNull;
@@ -50,18 +49,18 @@ public class ShopHomeFragment extends Fragment {
 
 
     public void setLatestRecyclerView() {
-        List<LatestItems> latestItems = new ArrayList<>();
-        latestItems.add(new LatestItems(R.drawable.base, R.string.summer_clothes));
-        latestItems.add(new LatestItems(R.drawable.banner_2, R.string.summer_clothes));
-        latestItems.add(new LatestItems(R.drawable.banner_1, R.string.summer_clothes));
-        latestItems.add(new LatestItems(R.drawable.base, R.string.summer_clothes));
-        latestItems.add(new LatestItems(R.drawable.banner_1, R.string.summer_clothes));
-        latestItems.add(new LatestItems(R.drawable.banner_2, R.string.summer_clothes));
+        List<LatestBanner> latestItems = new ArrayList<>();
+        latestItems.add(new LatestBanner(R.drawable.base, R.string.summer_clothes));
+        latestItems.add(new LatestBanner(R.drawable.banner_2, R.string.summer_clothes));
+        latestItems.add(new LatestBanner(R.drawable.banner_1, R.string.summer_clothes));
+        latestItems.add(new LatestBanner(R.drawable.base, R.string.summer_clothes));
+        latestItems.add(new LatestBanner(R.drawable.banner_1, R.string.summer_clothes));
+        latestItems.add(new LatestBanner(R.drawable.banner_2, R.string.summer_clothes));
 
-        LatestAdapter latestAdapter = new LatestAdapter(latestItems, getContext());
+        BannerAdapter bannerAdapter = new BannerAdapter(latestItems, getContext());
         binding.latestRV.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
-        binding.latestRV.setAdapter(latestAdapter);
+        binding.latestRV.setAdapter(bannerAdapter);
 
     }
 

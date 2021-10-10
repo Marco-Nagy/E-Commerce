@@ -4,19 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="item"
-            type="com.marco_nagy.e_commerce.product.ProductItems"/>
-
+<variable
+    name="item"
+    type="com.marco_nagy.e_commerce.home.latest.LatestProduct" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/product_cardView"
+            android:id="@+id/latest_product_cardView"
             android:layout_width="@dimen/_95sdp"
             android:layout_height="@dimen/_135sdp"
             android:layout_margin="@dimen/_10sdp"
@@ -40,37 +38,37 @@
             android:elevation="@dimen/_6sdp"
             tools:src="@drawable/scarf"
             android:layout_marginTop="@dimen/_5sdp"
-            app:layout_constraintEnd_toEndOf="@+id/product_cardView"
-            app:layout_constraintStart_toStartOf="@+id/product_cardView"
-            app:layout_constraintTop_toTopOf="@+id/product_cardView" />
+            app:layout_constraintEnd_toEndOf="@+id/latest_product_cardView"
+            app:layout_constraintStart_toStartOf="@+id/latest_product_cardView"
+            app:layout_constraintTop_toTopOf="@+id/latest_product_cardView" />
 
         <TextView
-            android:id="@+id/product_title"
+            android:id="@+id/latest_product_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/neusa_light"
             tools:text="@string/red_scarf"
-            android:text="@{item.title}"
+            android:text="@{item.name}"
             android:textSize="@dimen/_12ssp"
             android:textStyle="bold"
             android:textColor="#515C6F"
             android:elevation="@dimen/_6sdp"
             app:layout_constraintTop_toBottomOf="@+id/product_image"
-            app:layout_constraintEnd_toEndOf="@+id/product_cardView"
-            app:layout_constraintStart_toStartOf="@+id/product_cardView" />
+            app:layout_constraintEnd_toEndOf="@+id/latest_product_cardView"
+            app:layout_constraintStart_toStartOf="@+id/latest_product_cardView" />
 
         <TextView
-            android:id="@+id/product_price"
+            android:id="@+id/latest_product_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/neusa_next_std_bold"
             tools:text="@string/_49_99"
-            android:text="@{`$`.concat(Double.toString(item.price))}"
+            android:text="@{`$`.concat(item.price)}"
             android:textSize="@dimen/_10ssp"
             android:textStyle="bold"
             android:textColor="#515C6F"
             android:elevation="@dimen/_6sdp"
-            app:layout_constraintTop_toBottomOf="@+id/product_title"
-            app:layout_constraintStart_toStartOf="@+id/product_title" />
+            app:layout_constraintTop_toBottomOf="@+id/latest_product_title"
+            app:layout_constraintStart_toStartOf="@+id/latest_product_title" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

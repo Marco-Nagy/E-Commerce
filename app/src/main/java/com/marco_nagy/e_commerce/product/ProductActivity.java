@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.databinding.ActivityProductBinding;
 import com.marco_nagy.e_commerce.home.HomeActivity;
+import com.marco_nagy.e_commerce.home.latest.LatestProduct;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import org.jetbrains.annotations.NotNull;
@@ -24,6 +25,7 @@ public class ProductActivity extends AppCompatActivity {
     TabAdapter adapter;
 
     ProductItems productItems;
+    LatestProduct latestProduct;
 
     int[] image;
     @Override
@@ -32,6 +34,7 @@ public class ProductActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product);
 
         productItems = (ProductItems) getIntent().getSerializableExtra("productItems");
+         latestProduct= (LatestProduct) getIntent().getSerializableExtra("latestProduct");
         image = new int[]{productItems.getImage(), productItems.getImage(), productItems.getImage()};
 
         binding.productTitle.setText(productItems.getTitle());

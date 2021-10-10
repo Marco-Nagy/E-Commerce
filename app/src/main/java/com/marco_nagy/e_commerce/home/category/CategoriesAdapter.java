@@ -1,4 +1,4 @@
-package com.marco_nagy.e_commerce.home;
+package com.marco_nagy.e_commerce.home.category;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,10 +17,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder> {
-    List<CategoryItems> items;
+    List<CategoryItems> categoryItems;
     Context context;
-    public CategoriesAdapter(List<CategoryItems> items, Context context) {
-        this.items = items;
+    public CategoriesAdapter(List<CategoryItems> categoryItems, Context context) {
+        this.categoryItems = categoryItems;
         this.context = context;
     }
 
@@ -40,15 +40,15 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     @Override
     public void onBindViewHolder(@NonNull @NotNull CategoriesAdapter.CategoriesViewHolder holder, int position) {
 
-        holder.binding.setItem(items.get(position));
-        holder.binding.categoryImage.setImageResource(getItemsImage(items.get(position)));
+        holder.binding.setItem(categoryItems.get(position));
+        holder.binding.categoryImage.setImageResource(getItemsImage(categoryItems.get(position)));
 
 
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return categoryItems.size();
     }
 
     public static class CategoriesViewHolder extends RecyclerView.ViewHolder{

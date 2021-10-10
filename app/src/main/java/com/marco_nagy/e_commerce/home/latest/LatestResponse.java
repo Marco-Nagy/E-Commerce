@@ -1,10 +1,11 @@
 
 package com.marco_nagy.e_commerce.home.latest;
 
-import java.io.Serializable;
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+import java.util.List;
 
 public class LatestResponse implements Serializable
 {
@@ -17,7 +18,7 @@ public class LatestResponse implements Serializable
     private String message;
     @SerializedName("data")
     @Expose
-    private List<Datum> data = null;
+    private List<LatestProduct> data = null;
     private final static long serialVersionUID = 2749237969851386705L;
 
     public Boolean getStatus() {
@@ -36,11 +37,11 @@ public class LatestResponse implements Serializable
         this.message = message;
     }
 
-    public List<Datum> getData() {
+    public List<LatestProduct> getData() {
         return data;
     }
 
-    public void setData(List<Datum> data) {
+    public void setData(List<LatestProduct> data) {
         this.data = data;
     }
 
