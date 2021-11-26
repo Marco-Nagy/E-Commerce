@@ -15,43 +15,52 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.databinding.ActivityProductBinding;
 import com.marco_nagy.e_commerce.home.HomeActivity;
-import com.marco_nagy.e_commerce.home.latest.LatestProduct;
-import com.marco_nagy.e_commerce.home.latest.LatestProductInterface;
+import com.marco_nagy.e_commerce.home.latest.models.DataItem;
+import com.marco_nagy.e_commerce.home.latest.models.ImagesItem;
+import com.marco_nagy.e_commerce.product.adapters.SliderAdapter;
+import com.marco_nagy.e_commerce.product.fragments.TabDetailsFragment;
+import com.marco_nagy.e_commerce.product.fragments.TabProductFragment;
+import com.marco_nagy.e_commerce.product.fragments.TabReviewsFragment;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductActivity extends AppCompatActivity {
     ActivityProductBinding binding;
     TabAdapter adapter;
 
-    ProductItems productItems;
-    LatestProduct latestProduct;
-    LatestProductInterface latestProductInterface;
+  //  ProductItems productItems;
+    DataItem latestProduct;
+    DataItem searchItem;
+    List<ImagesItem> images ;
 
-    int[] image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product);
-        latestProductInterface.onLatestProductClick(latestProduct);
-        productItems = (ProductItems) getIntent().getSerializableExtra("productItems");
-        latestProduct = (LatestProduct) getIntent().getSerializableExtra("latestProduct");
-
-        image = new int[]{productItems.getImage(), productItems.getImage(), productItems.getImage()};
 
 
-        binding.productTitle.setText(productItems.getTitle());
-        binding.productPrice.setText(String.valueOf(productItems.getPrice()));
-        binding.ratingText.setText(String.valueOf(productItems.getRate()));
+        latestProduct = (DataItem) getIntent().getSerializableExtra("latestProduct");
+        searchItem = (DataItem) getIntent().getSerializableExtra("searchItems");
 
-        binding.productTitle.setText(latestProduct.getName());
-        binding.productPrice.setText(String.valueOf(latestProduct.getPrice()));
-        //binding.ratingText.setText(String.valueOf(latestProduct.get));
+        if (searchItem != null){
+            images = searchItem.getImages();
+            binding.productTitle.setText(searchItem.getItemName());
+            binding.productPrice.setText(searchItem.getPrice());
+
+        }else {
+            images = latestProduct.getImages();
+            binding.productTitle.setText(latestProduct.getItemName());
+            binding.productPrice.setText(latestProduct.getPrice());
+        }
+
+       ;
+     //   binding.ratingText.setText(String.valueOf(latestProduct.()));
 
         binding.cartBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -80,8 +89,8 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     private void setImageSlider() {
+        SliderAdapter sliderAdapter  = new SliderAdapter(images);
 
-        SliderAdapter sliderAdapter = new SliderAdapter(image);
         binding.imageSlider.setSliderAdapter(sliderAdapter);
         binding.imageSlider.setIndicatorAnimation(IndicatorAnimationType.WORM);
         binding.imageSlider.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);

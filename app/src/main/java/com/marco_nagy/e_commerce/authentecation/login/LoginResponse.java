@@ -7,8 +7,6 @@ package com.marco_nagy.e_commerce.authentecation.login;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
 
 public class LoginResponse {
 

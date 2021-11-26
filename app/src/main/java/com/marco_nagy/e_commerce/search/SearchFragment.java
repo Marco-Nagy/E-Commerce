@@ -12,11 +12,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.databinding.FragmentSearchBinding;
-import com.marco_nagy.e_commerce.product.ProductItems;
-
 
 import org.jetbrains.annotations.NotNull;
 
@@ -38,7 +35,7 @@ FragmentSearchBinding binding;
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setRecentlyRecyclerView();
+         setRecentlyRecyclerView();
         binding.searchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,14 +44,14 @@ FragmentSearchBinding binding;
         });
     }
     public void setRecentlyRecyclerView(){
-        List<ProductItems> productItems = new ArrayList<>();
-        productItems.add(new ProductItems(R.drawable.women_shoes, R.string.ankle_boots,49.99,4.1));
-        productItems.add(new ProductItems(R.drawable.backpack, R.string.back_pack,20.58,3.5));
-        productItems.add(new ProductItems(R.drawable.scarf, R.string.red_scarf,11.00,3.9));
-        productItems.add(new ProductItems(R.drawable.women_shoes, R.string.ankle_boots,49.99,4.6));
-        productItems.add(new ProductItems(R.drawable.backpack, R.string.back_pack,20.58,4.7));
-        productItems.add(new ProductItems(R.drawable.scarf, R.string.red_scarf,11.00,4.2));
-        RecentlyAdapter recentlyAdapter = new RecentlyAdapter(productItems,getContext());
+        List<RecentlyItems> recentlyItems = new ArrayList<>();
+        recentlyItems.add(new RecentlyItems(R.drawable.women_shoes, R.string.ankle_boots,"49.99",4.1));
+        recentlyItems.add(new RecentlyItems(R.drawable.backpack, R.string.back_pack,"20.58",3.5));
+        recentlyItems.add(new RecentlyItems(R.drawable.scarf, R.string.red_scarf,"11.00",3.9));
+        recentlyItems.add(new RecentlyItems(R.drawable.women_shoes, R.string.ankle_boots,"49.99",4.6));
+        recentlyItems.add(new RecentlyItems(R.drawable.backpack, R.string.back_pack,"20.58",4.7));
+        recentlyItems.add(new RecentlyItems(R.drawable.scarf, R.string.red_scarf,"11.00",4.2));
+        RecentlyAdapter recentlyAdapter = new RecentlyAdapter(recentlyItems,getContext());
         binding.recentlyRV.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
         binding.recentlyRV.setAdapter(recentlyAdapter);

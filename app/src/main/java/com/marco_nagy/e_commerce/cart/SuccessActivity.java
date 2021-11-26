@@ -1,11 +1,11 @@
 package com.marco_nagy.e_commerce.cart;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.databinding.ActivitySuccessBinding;

@@ -1,7 +1,6 @@
 
 package com.marco_nagy.e_commerce.authentecation.signup;
 
-import android.text.Editable;
 import android.util.Patterns;
 
 import com.google.gson.annotations.Expose;

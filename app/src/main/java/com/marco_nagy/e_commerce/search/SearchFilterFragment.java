@@ -1,4 +1,4 @@
-package com.marco_nagy.e_commerce.search;
+package com.marco_nagy.e_commerce.ui.search;
 
 import android.app.Dialog;
 import android.os.Bundle;

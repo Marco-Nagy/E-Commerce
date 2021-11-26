@@ -1,4 +1,4 @@
-package com.marco_nagy.e_commerce.product;
+package com.marco_nagy.e_commerce.product.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.databinding.SizeItemBinding;
+import com.marco_nagy.e_commerce.product.SizeItem;
 
 import org.jetbrains.annotations.NotNull;
 

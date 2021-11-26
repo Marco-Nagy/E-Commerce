@@ -10,22 +10,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.databinding.RecentlyItemBinding;
-import com.marco_nagy.e_commerce.product.ProductItems;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class RecentlyAdapter extends RecyclerView.Adapter<RecentlyAdapter.RecentlyViewHolder> {
-    List<ProductItems> productItems;
+    List<RecentlyItems> productItems;
     Context context;
 
-    public RecentlyAdapter(List<ProductItems> productItems, Context context) {
+    public RecentlyAdapter(List<RecentlyItems> productItems, Context context) {
         this.productItems = productItems;
         this.context = context;
     }
 
-    public int getItemsImage(ProductItems image) {
+    public int getItemsImage(RecentlyItems image) {
         return image.getImage();
     }
 
@@ -39,9 +38,10 @@ public class RecentlyAdapter extends RecyclerView.Adapter<RecentlyAdapter.Recent
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull RecentlyAdapter.RecentlyViewHolder holder, int position) {
-        holder.binding.setItem(productItems.get(position));
+        RecentlyItems recentlyItems = productItems.get(position);
+        holder.binding.setItem(recentlyItems);
         holder.binding.productImage.setImageResource(getItemsImage(productItems.get(position)));
-        holder.binding.productPrice.setText(productItems.get(position).toString());
+        holder.binding.productPrice.setText((recentlyItems.getPrice()));
     }
 
     @Override

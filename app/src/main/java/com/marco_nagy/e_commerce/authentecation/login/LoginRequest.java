@@ -12,10 +12,21 @@ public class LoginRequest  {
     private String email;
     @SerializedName("password")
     private String password;
+    @SerializedName("device_token")
+    private String token;
 
-    public LoginRequest(String email, String password) {
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public LoginRequest(String email, String password, String token) {
         this.email = email;
         this.password = password;
+        this.token = token;
     }
 
     public void setEmail(String email) {

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="item"
-            type="com.marco_nagy.e_commerce.product.ProductItems" />
+            type="com.marco_nagy.e_commerce.search.RecentlyItems" />
 
     </data>
 
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:elevation="@dimen/_6sdp"
             android:fontFamily="@font/neusa_medium"
-            android:text="@{item.title}"
+
             android:textColor="#515C6F"
             android:textSize="@dimen/_15ssp"
             android:textStyle="bold"
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/neusa_regular"
             tools:text="@string/_49_99"
-            android:text="@{`$`.concat(Double.toString(item.price))}"
+
             android:textSize="@dimen/_15ssp"
             android:textStyle="bold"
             android:textColor="#515C6F"

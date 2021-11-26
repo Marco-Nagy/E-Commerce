@@ -14,18 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECommerce"
         tools:targetApi="m">
-        <activity android:name="com.marco_nagy.e_commerce.shop.ShopActivity"></activity>
-        <activity android:name="com.marco_nagy.e_commerce.messages.ConversationActivity" />
-        <activity android:name="com.marco_nagy.e_commerce.cart.SuccessActivity" />
-        <activity android:name="com.marco_nagy.e_commerce.cart.CheckoutActivity" />
+        <activity android:name=".shop.ShopActivity"></activity>
+        <activity android:name=".messages.ConversationActivity" />
+        <activity android:name=".cart.SuccessActivity" />
+        <activity android:name=".cart.CheckoutActivity" />
         <activity
-            android:name="com.marco_nagy.e_commerce.product.ProductActivity"
+            android:name=".product.ProductActivity"
             android:label="@string/title_activity_product"
             android:theme="@style/Theme.ECommerce.NoActionBar" />
-        <activity android:name="com.marco_nagy.e_commerce.search.SearchResultActivity" />
-        <activity android:name="com.marco_nagy.e_commerce.messages.MessagesActivity" />
-        <activity android:name="com.marco_nagy.e_commerce.notification.NotificationsActivity" />
-        <activity android:name="com.marco_nagy.e_commerce.home.HomeActivity" />
+        <activity android:name=".search.SearchResultActivity" />
+        <activity android:name=".messages.MessagesActivity" />
+        <activity android:name=".notification.NotificationsActivity" />
+        <activity android:name=".home.HomeActivity" />
         <activity android:name="com.marco_nagy.e_commerce.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.marco_nagy.e_commerce.R;
-import com.marco_nagy.e_commerce.databinding.MessageItemBinding;
 import com.marco_nagy.e_commerce.databinding.NotificationItemBinding;
 
 import org.jetbrains.annotations.NotNull;

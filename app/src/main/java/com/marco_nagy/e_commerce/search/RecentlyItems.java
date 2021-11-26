@@ -1,27 +1,19 @@
-package com.example.e_commerce.search;
+package com.marco_nagy.e_commerce.search;
 
 import java.io.Serializable;
 
-public class RatedItems implements Serializable {
+public class RecentlyItems implements Serializable {
 
     private int image;
     private int title;
-    private double price;
+    private String price;
     private double rate;
 
-    public RatedItems(int image, int title, double price, double rate) {
+    public RecentlyItems(int image, int title, String price, double rate) {
         this.image = image;
         this.title = title;
         this.price = price;
         this.rate = rate;
-    }
-
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
     }
 
     public int getTitle() {
@@ -32,11 +24,11 @@ public class RatedItems implements Serializable {
         this.title = title;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -46,5 +38,13 @@ public class RatedItems implements Serializable {
 
     public void setRate(double rate) {
         this.rate = rate;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
     }
 }

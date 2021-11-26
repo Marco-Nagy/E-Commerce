@@ -94,7 +94,7 @@ public class SignupFragment extends Fragment {
             binding.emailETSignUp.setError("Enter a Valid E-mail Address");
             binding.emailETSignUp.requestFocus();
         } if(TextUtils.isEmpty(Objects.requireNonNull(signupRequest).getName())){
-            binding.userNameETSignUp.setError("Enter User Name.");
+            binding.userNameETSignUp.setError("Enter UserData Name.");
             binding.userNameETSignUp.requestFocus();
         }
         if (TextUtils.isEmpty(Objects.requireNonNull(signupRequest).getPassword())) {

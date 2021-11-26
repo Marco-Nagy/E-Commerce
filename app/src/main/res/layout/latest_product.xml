@@ -6,7 +6,7 @@
     <data>
 <variable
     name="item"
-    type="com.marco_nagy.e_commerce.home.latest.LatestProduct" />
+    type="com.marco_nagy.e_commerce.home.latest.models.DataItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/neusa_light"
             tools:text="@string/red_scarf"
-            android:text="@{item.name}"
+            android:text="@{item.itemName}"
             android:textSize="@dimen/_12ssp"
             android:textStyle="bold"
             android:textColor="#515C6F"

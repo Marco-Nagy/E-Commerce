@@ -1,4 +1,4 @@
-package com.marco_nagy.e_commerce.product;
+package com.marco_nagy.e_commerce.product.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.databinding.ColorItemBinding;
+import com.marco_nagy.e_commerce.product.ColorItem;
 
 import org.jetbrains.annotations.NotNull;
 

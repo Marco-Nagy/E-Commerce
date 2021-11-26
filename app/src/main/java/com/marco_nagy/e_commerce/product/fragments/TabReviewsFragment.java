@@ -1,4 +1,4 @@
-package com.marco_nagy.e_commerce.product;
+package com.marco_nagy.e_commerce.product.fragments;
 
 import android.os.Bundle;
 

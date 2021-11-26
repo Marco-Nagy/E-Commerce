@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.marco_nagy.e_commerce.R;
+import com.marco_nagy.e_commerce.product.ProductActivity;
 import com.marco_nagy.e_commerce.shop.ShopActivity;
 import com.marco_nagy.e_commerce.databinding.ActivityConversationBinding;
-import com.marco_nagy.e_commerce.product.ProductActivity;
 
 public class ConversationActivity extends AppCompatActivity {
     ActivityConversationBinding binding;

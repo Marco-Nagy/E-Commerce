@@ -3,13 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data
-        android:layout_width="0dp"
-        android:layout_height="0dp">
+    <data>
 
         <variable
             name="item"
-            type="com.marco_nagy.e_commerce.product.ProductItems" />
+            type="com.marco_nagy.e_commerce.home.latest.models.DataItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,7 +47,7 @@
             android:fontFamily="@font/neusa_light"
             tools:text="@string/red_scarf"
             android:layout_marginTop="@dimen/_15sdp"
-            android:text="@{item.title}"
+            android:text="@{item.itemName}"
             android:textSize="@dimen/_15ssp"
             android:textStyle="bold"
             android:textColor="#515C6F"
@@ -63,7 +61,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/neusa_next_std_bold"
             tools:text="@string/_49_99"
-            android:text="@{`$`.concat(Double.toString(item.price))}"
+            android:text="@{`$`.concat(item.price)}"
             android:textSize="@dimen/_12ssp"
             android:textStyle="bold"
             android:textColor="#515C6F"
@@ -91,7 +89,7 @@
             app:layout_constraintStart_toStartOf="@+id/rating_image"
             android:layout_marginStart="@dimen/_10sdp"
             app:layout_constraintTop_toTopOf="@+id/rating_image"
-            android:text="@{Double.toString(item.rate)}"
+
             android:textStyle="bold"
             android:textSize="@dimen/_10ssp"
             android:elevation="@dimen/_6sdp"

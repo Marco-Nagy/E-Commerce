@@ -1,5 +1,7 @@
 package com.marco_nagy.e_commerce.authentecation.login;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -15,6 +17,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.data.AppNetworkBuilder;
@@ -27,13 +31,16 @@ import java.util.Objects;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 
 public class LogInFragment extends Fragment {
     private static final String TAG = "LogInFragment";
     NavController navController;
     FragmentLogInBinding binding;
+    String token;
+    String deviceToken;
+    String email;
+    String password;
 
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
@@ -41,6 +48,7 @@ public class LogInFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_log_in, container, false);
         return binding.getRoot();
+
     }
 
     @Override
@@ -50,10 +58,17 @@ public class LogInFragment extends Fragment {
         binding.forgotPasswordTextVlogIn.setOnClickListener(v -> {
                     navController.navigate(R.id.action_logInFragment_to_forgotPasswordFragment);
         });
+        FirebaseMessaging.getInstance().getToken().addOnSuccessListener(new OnSuccessListener<String>() {
+            @Override
+            public void onSuccess(String token) {
+                Log.i(TAG, "onSuccess: This is your Firebase token "+token);
+                deviceToken = token;
+            }
+        });
         binding.logInBtn.setOnClickListener(v -> {
-            String email = Objects.requireNonNull(binding.emailETLogin.getText()).toString().trim();
-            String password = Objects.requireNonNull(binding.passwordETLogin.getText()).toString().trim();
-            LoginRequest loginRequest = new LoginRequest(email,password);
+             email = Objects.requireNonNull(binding.emailETLogin.getText()).toString().trim();
+             password = Objects.requireNonNull(binding.passwordETLogin.getText()).toString().trim();
+            LoginRequest loginRequest = new LoginRequest(email,password,deviceToken);
             checkLoginValidation(loginRequest);
 
         });
@@ -90,11 +105,24 @@ public class LogInFragment extends Fragment {
                     assert response.errorBody() != null;
                     LoginResponseError message = new Gson().fromJson(response.errorBody().charStream(), LoginResponseError.class);
                     Toast.makeText(getContext(), "" + message.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.i(TAG, "onResponse Error: "+message.getMessage());
+                    Log.i(TAG, "onResponse Error: "+token);
+
+
                 return;
                 }else  {
-
+                    assert response.body() != null;
+                    token = response.body().getData().getAccessToken();
+                    SharedPreferences preferences = requireContext().getSharedPreferences("userData", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor myEdit = preferences.edit();
+                    myEdit.putString("email",email);
+                    myEdit.putString("password",password);
+                    myEdit.apply();
+                    preferences.edit().putString("token",token).apply();
                     Toast.makeText(getContext(), "Welcome", Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "onResponse: "+response.headers().toString());
+                    Log.i(TAG, "onResponse Success: "+"token "+token);
+                    Log.i(TAG, "onResponse Success: "+response.headers().toString());
+                    Log.i(TAG, "onResponse Success: "+token);
                     navController.navigate(R.id.action_logInFragment_to_homeActivity);
                 }
             }

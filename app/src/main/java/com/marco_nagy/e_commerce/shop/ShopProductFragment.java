@@ -2,6 +2,9 @@ package com.marco_nagy.e_commerce.shop;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,16 +12,13 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.marco_nagy.e_commerce.product.ProductItems;
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.databinding.FragmentShopProductBinding;
 import com.marco_nagy.e_commerce.product.ProductActivity;
 import com.marco_nagy.e_commerce.product.ProductInterface;
-import com.marco_nagy.e_commerce.product.ProductsAdapter;
+import com.marco_nagy.e_commerce.product.ProductItems;
+import com.marco_nagy.e_commerce.product.adapters.ProductsAdapter;
+import com.marco_nagy.e_commerce.product.items.ProductItem;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -79,12 +79,17 @@ FragmentShopProductBinding binding;
     ProductInterface productInterface = new ProductInterface() {
 
         @Override
-        public void onProductClick(ProductItems productItems) {
+        public void onProductClick(ProductItem productItems) {
             Intent intent = new Intent(requireContext(), ProductActivity.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("productItems", productItems);
             intent.putExtras(bundle);
             startActivity(intent);
+        }
+
+        @Override
+        public void onProductClick(ProductItems productItems) {
+
         }
 
 

@@ -1,12 +1,5 @@
 package com.marco_nagy.e_commerce.data;
 
-import android.content.Context;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import javax.net.ssl.SSLContext;
-
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;

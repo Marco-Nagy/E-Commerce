@@ -10,9 +10,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.marco_nagy.e_commerce.cart.CartFragment;
 import com.marco_nagy.e_commerce.notification.NotificationsActivity;
 import com.marco_nagy.e_commerce.R;
-import com.marco_nagy.e_commerce.cart.CartFragment;
 import com.marco_nagy.e_commerce.databinding.ActivityHomeBinding;
 import com.marco_nagy.e_commerce.messages.MessagesActivity;
 

@@ -24,10 +24,10 @@ import com.marco_nagy.e_commerce.home.banner.BannerAdapter;
 import com.marco_nagy.e_commerce.home.banner.LatestBanner;
 import com.marco_nagy.e_commerce.home.category.CategoriesAdapter;
 import com.marco_nagy.e_commerce.home.category.CategoryItems;
-import com.marco_nagy.e_commerce.home.latest.LatestProduct;
 import com.marco_nagy.e_commerce.home.latest.LatestProductInterface;
 import com.marco_nagy.e_commerce.home.latest.LatestProductsAdapter;
 import com.marco_nagy.e_commerce.home.latest.LatestResponse;
+import com.marco_nagy.e_commerce.home.latest.models.DataItem;
 import com.marco_nagy.e_commerce.product.ProductActivity;
 
 import org.jetbrains.annotations.NotNull;
@@ -43,7 +43,7 @@ public class HomeFragment extends Fragment {
     NavController navController;
     FragmentHomeBinding binding;
     LatestProductsAdapter productsAdapter;
-    List<LatestProduct> latestProductList = new ArrayList<>();
+    List<DataItem> latestProductList = new ArrayList<>();
     private static final String TAG = "HomeFragment";
 
 
@@ -104,8 +104,11 @@ public class HomeFragment extends Fragment {
                     LatestResponse message = new Gson().fromJson(response.errorBody().charStream(), LatestResponse.class);
                     Log.i(TAG, "onResponse: " + message.getMessage());
 
-                } else
+                } else {
+                    assert response.body() != null;
                     latestProductList = response.body().getData();
+                    Log.i(TAG, "onResponse: list "+response.body().getData().get(0).getImages().size());
+                }
                 productsAdapter = new LatestProductsAdapter(latestProductList, getContext(), latestProductInterface);
                 binding.productRV.setLayoutManager(new LinearLayoutManager(getContext(),
                         LinearLayoutManager.HORIZONTAL, false));
@@ -126,9 +129,7 @@ public class HomeFragment extends Fragment {
 
     LatestProductInterface latestProductInterface = latestProduct -> {
         Intent intent = new Intent(requireContext(), ProductActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("latestProduct", latestProduct);
-        intent.putExtras(bundle);
+        intent.putExtra("latestProduct",  latestProduct);
         startActivity(intent);
     };
 }
