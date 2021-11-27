@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -60,7 +61,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.RatedViewH
 
             }
         });
-
+        holder.binding.productImage.setAnimation(AnimationUtils.loadAnimation(context,R.anim.animation));
 
 
     }

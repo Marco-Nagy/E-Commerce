@@ -3,6 +3,7 @@ package com.marco_nagy.e_commerce.search;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -42,6 +43,8 @@ public class RecentlyAdapter extends RecyclerView.Adapter<RecentlyAdapter.Recent
         holder.binding.setItem(recentlyItems);
         holder.binding.productImage.setImageResource(getItemsImage(productItems.get(position)));
         holder.binding.productPrice.setText((recentlyItems.getPrice()));
+        holder.binding.productImage.setAnimation(AnimationUtils.loadAnimation(context,R.anim.animation));
+
     }
 
     @Override

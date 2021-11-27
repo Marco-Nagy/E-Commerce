@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -54,7 +55,7 @@ public class LatestProductsAdapter extends RecyclerView.Adapter<LatestProductsAd
             Glide.with(context).load(latestProduct.getImages().get(0).getImage()).placeholder(R.drawable.backpack).into(holder.binding.productImage);
 
         }
-        //holder.binding.productImage.setImageResource(getItemsImage(latestData.get(position)));
+        holder.binding.productImage.setAnimation(AnimationUtils.loadAnimation(context,R.anim.animation));
         holder.binding.latestProductPrice.setText(latestProducts.get(position).toString());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
