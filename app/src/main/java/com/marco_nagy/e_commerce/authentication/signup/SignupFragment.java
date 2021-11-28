@@ -1,4 +1,4 @@
-package com.marco_nagy.e_commerce.authentecation.signup;
+package com.marco_nagy.e_commerce.authentication.signup;
 
 import android.os.Bundle;
 import android.text.TextUtils;

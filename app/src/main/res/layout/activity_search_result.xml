@@ -76,6 +76,14 @@
             app:layout_constraintTop_toBottomOf="@id/linearLayout"
             tools:listitem="@layout/search_item" />
 
-
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/search_anim"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/search_white_tshirt" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

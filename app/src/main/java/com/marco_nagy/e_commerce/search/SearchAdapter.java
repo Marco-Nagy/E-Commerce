@@ -62,6 +62,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.RatedViewH
             }
         });
         holder.binding.productImage.setAnimation(AnimationUtils.loadAnimation(context,R.anim.animation));
+        holder.binding.productCardView.setAnimation(AnimationUtils.loadAnimation(context,R.anim.bottom_to_top));
 
 
     }

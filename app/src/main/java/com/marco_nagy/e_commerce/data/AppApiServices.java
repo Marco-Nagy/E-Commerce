@@ -1,9 +1,9 @@
 package com.marco_nagy.e_commerce.data;
 
-import com.marco_nagy.e_commerce.authentecation.login.LoginRequest;
-import com.marco_nagy.e_commerce.authentecation.login.LoginResponse;
-import com.marco_nagy.e_commerce.authentecation.signup.SignupRequest;
-import com.marco_nagy.e_commerce.authentecation.signup.SignupResponse;
+import com.marco_nagy.e_commerce.authentication.login.LoginRequest;
+import com.marco_nagy.e_commerce.authentication.login.LoginResponse;
+import com.marco_nagy.e_commerce.authentication.signup.SignupRequest;
+import com.marco_nagy.e_commerce.authentication.signup.SignupResponse;
 import com.marco_nagy.e_commerce.cart.AddToCartResponse;
 import com.marco_nagy.e_commerce.home.latest.LatestResponse;
 import com.marco_nagy.e_commerce.search.model.SearchRequest;

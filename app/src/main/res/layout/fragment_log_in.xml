@@ -6,7 +6,7 @@
     <data>
         <variable
             name="login"
-            type="com.marco_nagy.e_commerce.authentecation.login.LoginRequest" />
+            type="com.marco_nagy.e_commerce.authentication.login.LoginRequest" />
 
     </data>
 
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#F5F6F8"
-        tools:context=".authentecation.LogInFragment">
+        tools:context=".authentication.LogInFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

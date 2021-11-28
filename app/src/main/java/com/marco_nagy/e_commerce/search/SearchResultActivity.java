@@ -32,6 +32,7 @@ import retrofit2.Response;
 public class SearchResultActivity extends AppCompatActivity {
     ActivitySearchResultBinding binding;
     List<DataItem> searchItems;
+    SearchAdapter searchAdapter;
     private static final String TAG = "SearchResultActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,14 +67,15 @@ public class SearchResultActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                binding.searchRV.setAdapter(null);
+                binding.searchAnim.setVisibility(View.VISIBLE);
             }
         });
-        getSearchResult();
+
     }
     public void setSearchRecyclerView()  {
 
-        SearchAdapter searchAdapter = new SearchAdapter(searchItems, this, searchInterface);
+        searchAdapter = new SearchAdapter(searchItems, this, searchInterface);
         binding.searchRV.setLayoutManager(new GridLayoutManager( this, 2));
         binding.searchRV.setAdapter(searchAdapter);
     }
@@ -87,6 +89,7 @@ public class SearchResultActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(@NotNull Call<SearchResponse> call, @NotNull Response<SearchResponse> response) {
                     if (response.isSuccessful()){
+                        binding.searchAnim.setVisibility(View.GONE);
                         assert response.body() != null;
 
                         searchItems =response.body().getData();
@@ -102,6 +105,7 @@ public class SearchResultActivity extends AppCompatActivity {
                 }
             });
         }
+
     }
 
     public void showSearchFilterDialog() {

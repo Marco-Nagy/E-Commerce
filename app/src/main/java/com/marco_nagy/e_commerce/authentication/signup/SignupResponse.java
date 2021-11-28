@@ -1,15 +1,11 @@
 
-package com.marco_nagy.e_commerce.authentecation.login;
-
-
-
+package com.marco_nagy.e_commerce.authentication.signup;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class LoginResponse {
-
+public class SignupResponse {
     @SerializedName("status")
     @Expose
     private Boolean status;
@@ -19,7 +15,7 @@ public class LoginResponse {
     @SerializedName("data")
     @Expose
     private Data data;
-    private final static long serialVersionUID = 8596724583377015085L;
+    private final static long serialVersionUID = 5730701596330618396L;
 
     public Boolean getStatus() {
         return status;
@@ -45,49 +41,27 @@ public class LoginResponse {
         this.data = data;
     }
 
-
 }
 class Data {
-
-    @SerializedName("id")
-    @Expose
-    private Integer id;
     @SerializedName("name")
     @Expose
     private String name;
     @SerializedName("email")
     @Expose
     private String email;
-    @SerializedName("email_verified_at")
-    @Expose
-    private Object emailVerifiedAt;
-    @SerializedName("image")
-    @Expose
-    private Object image;
-    @SerializedName("status")
-    @Expose
-    private String status;
-    @SerializedName("address_id")
-    @Expose
-    private Object addressId;
-    @SerializedName("created_at")
-    @Expose
-    private String createdAt;
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
+    @SerializedName("created_at")
+    @Expose
+    private String createdAt;
+    @SerializedName("id")
+    @Expose
+    private Integer id;
     @SerializedName("accessToken")
     @Expose
     private String accessToken;
-    private final static long serialVersionUID = -1830328679559316913L;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    private final static long serialVersionUID = -3025573659429256346L;
 
     public String getName() {
         return name;
@@ -105,36 +79,12 @@ class Data {
         this.email = email;
     }
 
-    public Object getEmailVerifiedAt() {
-        return emailVerifiedAt;
+    public String getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setEmailVerifiedAt(Object emailVerifiedAt) {
-        this.emailVerifiedAt = emailVerifiedAt;
-    }
-
-    public Object getImage() {
-        return image;
-    }
-
-    public void setImage(Object image) {
-        this.image = image;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Object getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(Object addressId) {
-        this.addressId = addressId;
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public String getCreatedAt() {
@@ -145,12 +95,12 @@ class Data {
         this.createdAt = createdAt;
     }
 
-    public String getUpdatedAt() {
-        return updatedAt;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getAccessToken() {

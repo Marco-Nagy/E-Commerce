@@ -1,4 +1,4 @@
-package com.marco_nagy.e_commerce.authentecation.login;
+package com.marco_nagy.e_commerce.authentication.login;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

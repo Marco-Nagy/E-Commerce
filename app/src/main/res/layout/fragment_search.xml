@@ -15,6 +15,7 @@
         tools:context=".search.SearchFragment">
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/gradient_item_bg"
@@ -54,10 +55,10 @@
                     android:background="#F5F6F8"
                     android:gravity="center"
                     android:hint="@string/search_something"
+                    app:drawableStartCompat="@drawable/search"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:queryHint="@string/search_something"
-                    app:drawableStartCompat="@drawable/search" />
+                    app:queryHint="@string/search_something" />
             </androidx.cardview.widget.CardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -103,7 +104,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/latest_RV"
                 tools:listitem="@layout/recently_item" />
+
         </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/searching_contract" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

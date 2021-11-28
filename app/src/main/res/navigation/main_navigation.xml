@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/signUp_Fragment">
+    app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/signUp_Fragment"
-        android:name="com.marco_nagy.e_commerce.authentecation.signup.SignupFragment"
+        android:name="com.marco_nagy.e_commerce.authentication.signup.SignupFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.marco_nagy.e_commerce.authentecation.ForgotPasswordFragment"
+        android:name="com.marco_nagy.e_commerce.authentication.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" >
         <action
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/logInFragment"
-        android:name="com.marco_nagy.e_commerce.authentecation.login.LogInFragment"
+        android:name="com.marco_nagy.e_commerce.authentication.login.LogInFragment"
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_log_in" >
         <action
@@ -46,6 +46,21 @@
         android:label="HomeActivity"
         tools:layout="@layout/activity_home">
     </activity>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.marco_nagy.e_commerce.authentication.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_signUp_Fragment"
+            app:destination="@id/signUp_Fragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
+    </fragment>
 
 
 </navigation>

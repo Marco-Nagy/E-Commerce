@@ -6,7 +6,7 @@
     <data>
         <variable
             name="signup"
-            type="com.marco_nagy.e_commerce.authentecation.signup.SignupRequest" />
+            type="com.marco_nagy.e_commerce.authentication.signup.SignupRequest" />
 
     </data>
 
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:background="#F5F6F8"
         android:orientation="vertical"
-        tools:context=".authentecation.SignUpFragment">
+        tools:context=".authentication.SignUpFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
