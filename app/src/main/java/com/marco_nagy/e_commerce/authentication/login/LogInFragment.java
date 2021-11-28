@@ -1,7 +1,5 @@
 package com.marco_nagy.e_commerce.authentication.login;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -22,6 +20,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.data.AppNetworkBuilder;
+import com.marco_nagy.e_commerce.data.SharedPref;
 import com.marco_nagy.e_commerce.databinding.FragmentLogInBinding;
 
 import org.jetbrains.annotations.NotNull;
@@ -37,7 +36,7 @@ public class LogInFragment extends Fragment {
     private static final String TAG = "LogInFragment";
     NavController navController;
     FragmentLogInBinding binding;
-    String token;
+   static String token;
     String deviceToken;
     String email;
     String password;
@@ -63,6 +62,7 @@ public class LogInFragment extends Fragment {
             public void onSuccess(String token) {
                 Log.i(TAG, "onSuccess: This is your Firebase token "+token);
                 deviceToken = token;
+
             }
         });
         binding.logInBtn.setOnClickListener(v -> {
@@ -113,12 +113,17 @@ public class LogInFragment extends Fragment {
                 }else  {
                     assert response.body() != null;
                     token = response.body().getData().getAccessToken();
-                    SharedPreferences preferences = requireContext().getSharedPreferences("userData", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor myEdit = preferences.edit();
-                    myEdit.putString("email",email);
-                    myEdit.putString("password",password);
-                    myEdit.apply();
-                    preferences.edit().putString("token",token).apply();
+//
+//                    SharedPreferences preferences = requireContext().getSharedPreferences("userData", Context.MODE_PRIVATE);
+//                    SharedPreferences.Editor myEdit = preferences.edit();
+//                    myEdit.putString("email",email);
+//                    myEdit.apply();
+//                    preferences.edit().putString("token",token).apply();
+
+
+                    SharedPref.write(SharedPref.Token, token);//save string in shared preference.
+                    SharedPref.write(SharedPref.EMAIL, email);//save int in shared preference.
+
                     Toast.makeText(getContext(), "Welcome", Toast.LENGTH_SHORT).show();
                     Log.i(TAG, "onResponse Success: "+"token "+token);
                     Log.i(TAG, "onResponse Success: "+response.headers().toString());

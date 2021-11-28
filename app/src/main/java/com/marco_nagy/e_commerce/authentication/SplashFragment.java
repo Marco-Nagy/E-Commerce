@@ -2,6 +2,7 @@ package com.marco_nagy.e_commerce.authentication;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.marco_nagy.e_commerce.R;
+import com.marco_nagy.e_commerce.data.SharedPref;
 import com.marco_nagy.e_commerce.databinding.FragmentSplashBinding;
 
 import org.jetbrains.annotations.NotNull;
@@ -25,6 +27,7 @@ public class SplashFragment extends Fragment {
     FragmentSplashBinding binding;
     NavController navController;
     Animation textAnim, layoutAnim;
+    private static final String TAG = "SplashFragment";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,7 +64,14 @@ public class SplashFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                navController.navigate(R.id.action_splashFragment_to_signUp_Fragment);
+             String token=  SharedPref.read(SharedPref.Token, null);
+                Log.i(TAG, "run: "+ token);
+                if (token== null){
+                    navController.navigate(R.id.action_splashFragment_to_signUp_Fragment);
+                }else{
+                    navController.navigate(R.id.action_splashFragment_to_homeActivity);
+                }
+
             }
         }, 5500);
     }
