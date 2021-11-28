@@ -49,10 +49,10 @@ public class LatestProductsAdapter extends RecyclerView.Adapter<LatestProductsAd
         holder.binding.setItem(latestProduct);
         Log.i(TAG, "onBindViewHolder: " + latestProduct.getImages().size());
         if(latestProduct.getImages().isEmpty()){
-            holder.binding.productImage.setImageResource(R.drawable.backpack);
+            holder.binding.productImage.setImageResource(R.mipmap.online_shopping_foreground);
         }
         else{
-            Glide.with(context).load(latestProduct.getImages().get(0).getImage()).placeholder(R.drawable.backpack).into(holder.binding.productImage);
+            Glide.with(context).load(latestProduct.getImages().get(0).getImage()).placeholder(R.mipmap.online_shopping_foreground).into(holder.binding.productImage);
 
         }
         holder.binding.productImage.setAnimation(AnimationUtils.loadAnimation(context,R.anim.animation));

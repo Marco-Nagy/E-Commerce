@@ -48,10 +48,10 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.RatedViewH
         holder.binding.productTitle.setText(items.getItemName());
         holder.binding.productPrice.setText(items.getPrice());
         if(items.getImages().isEmpty()){
-            holder.binding.productImage.setImageResource(R.drawable.backpack);
+            holder.binding.productImage.setImageResource(R.mipmap.online_shopping_foreground);
         }
         else{
-            Glide.with(context).load(items.getImages().get(0).getImage()).placeholder(R.drawable.backpack).into(holder.binding.productImage);
+            Glide.with(context).load(items.getImages().get(0).getImage()).placeholder(R.mipmap.online_shopping_foreground).into(holder.binding.productImage);
 
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {

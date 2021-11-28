@@ -7,9 +7,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/online_shopping"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/online_shopping"
         android:supportsRtl="true"
         android:theme="@style/Theme.ECommerce"
         android:usesCleartextTraffic="true"
