@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Shop Now</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sign_up">Sign Up</string>
     <string name="log_in">Log In</string>
     <string name="forgot">Forgot</string>
@@ -23,7 +22,6 @@
     <string name="furniture">Furniture</string>
     <string name="home">Home</string>
     <string name="stationary">Stationary</string>
-    <string name="allcategories">AllCategories</string>
     <string name="messages">Messages</string>
     <string name="search">Search</string>
     <string name="cart">Cart</string>
@@ -36,7 +34,6 @@
     <string name="pattern_dress">Pattern Dress</string>
     <string name="floral_dress">floral Dress</string>
     <string name="yellow_bag">JJ’s Backpack</string>
-    <string name="blue_bag">Armor Blu</string>
     <string name="green_bag">Action Sports</string>
     <string name="grey_jacket">Grey Jacket</string>
     <string name="red_jacket">Faux Sued Ja…</string>
@@ -58,19 +55,7 @@
     <string name="brand">Brand</string>
     <string name="all_brands">All Brands</string>
     <string name="color">Color</string>
-    <string name="r_neck">Round Neck Shirt</string>
-    <string name="v_neck_p">V Neck Polo Shirt</string>
-    <string name="v_neck_l">V Neck Shirt - Lime</string>
-    <string name="v_neck_pi">V Neck Shirt - Pink</string>
-    <string name="r_neck_bas">Round Neck Shirt - Basic</string>
-    <string name="chemise">Chemise - </string>
     <string name="title_activity_product">ProductActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="share_this">Share This</string>
-    <string name="products">Products</string>
-    <string name="reviews">Reviews</string>
-    <string name="details">Details</string>
     <string name="_7_hot_pink">7,Hot Pink</string>
     <string name="total">Total</string>
     <string name="_81_57">$81.57</string>

@@ -21,7 +21,6 @@ import com.marco_nagy.e_commerce.product.ProductActivity;
 import com.marco_nagy.e_commerce.product.ProductInterface;
 import com.marco_nagy.e_commerce.product.ProductItems;
 import com.marco_nagy.e_commerce.product.adapters.ProductsAdapter;
-import com.marco_nagy.e_commerce.product.items.ProductItem;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -90,11 +89,7 @@ public class ShopHomeFragment extends Fragment {
 
     ProductInterface productInterface = new ProductInterface() {
 
-        @Override
-        public void onProductClick(ProductItem productItems) {
-
-        }
-
+     
         @Override
         public void onProductClick(ProductItems productItems) {
             Intent intent = new Intent(requireContext(), ProductActivity.class);
