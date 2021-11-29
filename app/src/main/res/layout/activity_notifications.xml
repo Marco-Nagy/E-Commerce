@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F5F6F8"
-        tools:context=".notification.NotificationsActivity">
+        tools:context=".ui.notification.NotificationsActivity">
 
         <TextView
             android:id="@+id/notifications_TextV"

@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#F5F6F8"
-        tools:context=".cart.CartFragment"
+        tools:context=".ui.cart.CartFragment"
         android:weightSum="6">
 
         <TextView

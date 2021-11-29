@@ -15,18 +15,18 @@
         android:usesCleartextTraffic="true"
         android:usesNonSdkApi="true"
         tools:targetApi="m">
-        <activity android:name=".shop.ShopActivity" />
-        <activity android:name=".messages.ConversationActivity" />
-        <activity android:name=".cart.SuccessActivity" />
-        <activity android:name=".cart.CheckoutActivity" />
+        <activity android:name=".ui.shop.ShopActivity" />
+        <activity android:name=".ui.messages.ConversationActivity" />
+        <activity android:name=".ui.cart.SuccessActivity" />
+        <activity android:name=".ui.cart.CheckoutActivity" />
         <activity
-            android:name=".product.ProductActivity"
+            android:name=".ui.product.ProductActivity"
             android:label="@string/title_activity_product"
             android:theme="@style/Theme.ECommerce.NoActionBar" />
-        <activity android:name=".search.SearchResultActivity" />
-        <activity android:name=".messages.MessagesActivity" />
-        <activity android:name=".notification.NotificationsActivity" />
-        <activity android:name=".home.HomeActivity" />
+        <activity android:name=".ui.search.SearchResultActivity" />
+        <activity android:name=".ui.messages.MessagesActivity" />
+        <activity android:name=".ui.notification.NotificationsActivity" />
+        <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

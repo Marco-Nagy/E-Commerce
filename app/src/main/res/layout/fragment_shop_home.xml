@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:background="#F6F7F9"
         android:orientation="vertical"
-        tools:context=".shop.ShopActivity">
+        tools:context=".ui.shop.ShopActivity">
 
 
         <TextView

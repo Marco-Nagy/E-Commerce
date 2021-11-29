@@ -6,7 +6,7 @@
     <data>
         <variable
             name="login"
-            type="com.marco_nagy.e_commerce.authentication.login.LoginRequest" />
+            type="com.marco_nagy.e_commerce.ui.authentication.login.LoginRequest" />
 
     </data>
 

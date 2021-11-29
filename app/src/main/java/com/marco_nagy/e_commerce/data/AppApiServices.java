@@ -1,13 +1,13 @@
 package com.marco_nagy.e_commerce.data;
 
-import com.marco_nagy.e_commerce.authentication.login.LoginRequest;
-import com.marco_nagy.e_commerce.authentication.login.LoginResponse;
-import com.marco_nagy.e_commerce.authentication.signup.SignupRequest;
-import com.marco_nagy.e_commerce.authentication.signup.SignupResponse;
-import com.marco_nagy.e_commerce.cart.AddToCartResponse;
-import com.marco_nagy.e_commerce.home.latest.LatestResponse;
-import com.marco_nagy.e_commerce.search.model.SearchRequest;
-import com.marco_nagy.e_commerce.search.model.SearchResponse;
+import com.marco_nagy.e_commerce.ui.authentication.login.LoginRequest;
+import com.marco_nagy.e_commerce.ui.authentication.login.LoginResponse;
+import com.marco_nagy.e_commerce.ui.authentication.signup.SignupRequest;
+import com.marco_nagy.e_commerce.ui.authentication.signup.SignupResponse;
+import com.marco_nagy.e_commerce.ui.cart.AddToCartResponse;
+import com.marco_nagy.e_commerce.ui.home.latest.LatestResponse;
+import com.marco_nagy.e_commerce.ui.search.model.SearchRequest;
+import com.marco_nagy.e_commerce.ui.search.model.SearchResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="item"
-            type="com.marco_nagy.e_commerce.cart.CartItems" />
+            type="com.marco_nagy.e_commerce.ui.cart.CartItems" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

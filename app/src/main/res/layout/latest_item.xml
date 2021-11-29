@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.marco_nagy.e_commerce.home.banner.LatestBanner"/>
+            type="com.marco_nagy.e_commerce.ui.home.banner.LatestBanner"/>
 
     </data>
 

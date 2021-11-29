@@ -6,7 +6,7 @@
     <data>
         <variable
             name="item"
-            type="com.marco_nagy.e_commerce.search.RecentlyItems" />
+            type="com.marco_nagy.e_commerce.ui.search.RecentlyItems" />
 
     </data>
 

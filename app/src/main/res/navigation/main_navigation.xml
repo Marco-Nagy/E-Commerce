@@ -5,7 +5,7 @@
     app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/signUp_Fragment"
-        android:name="com.marco_nagy.e_commerce.authentication.signup.SignupFragment"
+        android:name="com.marco_nagy.e_commerce.ui.authentication.signup.SignupFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.marco_nagy.e_commerce.authentication.ForgotPasswordFragment"
+        android:name="com.marco_nagy.e_commerce.ui.authentication.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" >
         <action
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/logInFragment"
-        android:name="com.marco_nagy.e_commerce.authentication.login.LogInFragment"
+        android:name="com.marco_nagy.e_commerce.ui.authentication.login.LogInFragment"
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_log_in" >
         <action
@@ -41,13 +41,13 @@
     </fragment>
     <activity
         android:id="@+id/homeActivity"
-        android:name="com.marco_nagy.e_commerce.home.HomeActivity"
+        android:name="com.marco_nagy.e_commerce.ui.home.HomeActivity"
         android:label="HomeActivity"
         tools:layout="@layout/activity_home">
     </activity>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.marco_nagy.e_commerce.authentication.SplashFragment"
+        android:name="com.marco_nagy.e_commerce.ui.authentication.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
         <action

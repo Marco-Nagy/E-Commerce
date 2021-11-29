@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        tools:context=".authentication.SplashFragment">
+        tools:context=".ui.authentication.SplashFragment">
 
 
         <com.airbnb.lottie.LottieAnimationView

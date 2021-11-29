@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.marco_nagy.e_commerce.home.HomeFragment"
+        android:name="com.marco_nagy.e_commerce.ui.home.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
 
@@ -18,13 +18,13 @@
         tools:layout="@layout/fragment_more" />
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.marco_nagy.e_commerce.search.SearchFragment"
+        android:name="com.marco_nagy.e_commerce.ui.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
     </fragment>
     <fragment
         android:id="@+id/navigation_cart"
-        android:name="com.marco_nagy.e_commerce.cart.CartFragment"
+        android:name="com.marco_nagy.e_commerce.ui.cart.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
