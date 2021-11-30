@@ -13,7 +13,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_more"
-        android:name="com.marco_nagy.e_commerce.MoreFragment"
+        android:name="com.marco_nagy.e_commerce.ui.MoreFragment"
         android:label="fragment_more"
         tools:layout="@layout/fragment_more" />
     <fragment
@@ -29,7 +29,7 @@
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.marco_nagy.e_commerce.ProfileFragment"
+        android:name="com.marco_nagy.e_commerce.ui.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 

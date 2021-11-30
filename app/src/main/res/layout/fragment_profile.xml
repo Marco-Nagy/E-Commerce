@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="#F5F6F8"
         android:orientation="vertical"
-        tools:context=".ProfileFragment">
+        tools:context=".ui.ProfileFragment">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">

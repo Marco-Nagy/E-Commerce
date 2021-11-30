@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 public class SharedPref
 {
     private static SharedPreferences mSharedPref;
-    SharedPreferences.Editor prefsEditor = mSharedPref.edit();
+      SharedPreferences.Editor prefsEditor = mSharedPref.edit();
     public static final String Token = "token";
     public static final String EMAIL = "email";
     public static final String IS_SELECT = "IS_SELECT";
@@ -51,13 +51,15 @@ public class SharedPref
         SharedPreferences.Editor prefsEditor = mSharedPref.edit();
         prefsEditor.putInt(key, value).apply();
     }
-    public void removePlaceObj(String kye) {
+    public static void removePlaceObj(String kye) {
+        SharedPreferences.Editor prefsEditor = mSharedPref.edit();
         prefsEditor.remove(kye);
         prefsEditor.apply();
     }
 
-    public void clearAll() {
+    public static void clearAll() {
+        SharedPreferences.Editor prefsEditor = mSharedPref.edit();
         prefsEditor.clear();
-        prefsEditor.commit();
+        prefsEditor.apply();
     }
 }

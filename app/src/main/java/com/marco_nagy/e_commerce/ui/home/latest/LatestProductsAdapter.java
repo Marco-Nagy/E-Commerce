@@ -56,6 +56,7 @@ public class LatestProductsAdapter extends RecyclerView.Adapter<LatestProductsAd
 
         }
         holder.binding.productImage.setAnimation(AnimationUtils.loadAnimation(context,R.anim.animation));
+        holder.binding.latestProductCardView.setAnimation(AnimationUtils.loadAnimation(context,R.anim.bottom_to_top));
         holder.binding.latestProductPrice.setText(latestProducts.get(position).toString());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
