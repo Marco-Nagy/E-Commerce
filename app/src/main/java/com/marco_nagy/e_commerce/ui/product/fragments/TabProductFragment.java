@@ -21,7 +21,6 @@ import com.marco_nagy.e_commerce.ui.product.adapters.SizeAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -52,7 +51,7 @@ FragmentTabProductBinding binding;
 //        searchItem = (DataItem) getIntent().getSerializableExtra("searchItems");
 
         setColorRecyclerView();
-        //setSizeRecyclerView();
+        setSizeRecyclerView();
     }
     public void setColorRecyclerView() {
         List<ColorItem> colorItems;
@@ -70,7 +69,12 @@ FragmentTabProductBinding binding;
 
     }
     public void setSizeRecyclerView() {
-        List<SizesItem> sizeItems = new ArrayList<>();
+        List<SizesItem> sizeItems;
+        if (searchItem != null){
+            sizeItems = searchItem.getSizes();
+        }else {
+            sizeItems = latestProduct.getSizes();
+        }
 
 
         SizeAdapter sizeAdapter = new SizeAdapter(getContext(),sizeItems );
