@@ -16,6 +16,8 @@ import com.marco_nagy.e_commerce.databinding.FragmentTabProductBinding;
 import com.marco_nagy.e_commerce.ui.models.ColorItem;
 import com.marco_nagy.e_commerce.ui.models.DataItem;
 import com.marco_nagy.e_commerce.ui.models.SizesItem;
+import com.marco_nagy.e_commerce.ui.product.ColorInterface;
+import com.marco_nagy.e_commerce.ui.product.SizeInterface;
 import com.marco_nagy.e_commerce.ui.product.adapters.ColorAdapter;
 import com.marco_nagy.e_commerce.ui.product.adapters.SizeAdapter;
 
@@ -27,11 +29,14 @@ import java.util.List;
 public class TabProductFragment extends Fragment {
 FragmentTabProductBinding binding;
     DataItem latestProduct, searchItem;
+    ColorInterface colorInterface ;
+    SizeInterface sizeInterface;
 
-
-    public TabProductFragment( DataItem latestProduct, DataItem searchItem) {
+    public TabProductFragment(DataItem latestProduct, DataItem searchItem, ColorInterface colorInterface, SizeInterface sizeInterface) {
         this.latestProduct = latestProduct;
         this.searchItem = searchItem;
+        this.colorInterface= colorInterface;
+        this.sizeInterface = sizeInterface;
     }
 
     @Override
@@ -61,7 +66,7 @@ FragmentTabProductBinding binding;
             colorItems = latestProduct.getColor();
         }
 
-        ColorAdapter colorAdapter = new ColorAdapter(getContext(),colorItems );
+        ColorAdapter colorAdapter = new ColorAdapter(getContext(),colorItems,colorInterface );
         binding.selectColorRV.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
         binding.selectColorRV.setAdapter(colorAdapter);
@@ -77,11 +82,12 @@ FragmentTabProductBinding binding;
         }
 
 
-        SizeAdapter sizeAdapter = new SizeAdapter(getContext(),sizeItems );
+        SizeAdapter sizeAdapter = new SizeAdapter(getContext(),sizeItems, sizeInterface);
         binding.selectSizeRV.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
         binding.selectSizeRV.setAdapter(sizeAdapter);
 
 
     }
+
 }

@@ -121,7 +121,7 @@ public class LogInFragment extends Fragment {
 //                    preferences.edit().putString("token",token).apply();
 
 
-                    SharedPref.write(SharedPref.Token, token);//save string in shared preference.
+                    SharedPref.write(SharedPref.Token, "Bearer "+token);//save string in shared preference.
                     SharedPref.write(SharedPref.EMAIL, email);//save int in shared preference.
 
                     Toast.makeText(getContext(), "Welcome", Toast.LENGTH_SHORT).show();

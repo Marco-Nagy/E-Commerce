@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.databinding.SizeItemBinding;
 import com.marco_nagy.e_commerce.ui.models.SizesItem;
+import com.marco_nagy.e_commerce.ui.product.SizeInterface;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -25,10 +26,12 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeAdapter.SizeViewHolder
     private final Context context;
     private List<SizesItem> sizeItems;
     public static int checkedPositionSize =-1;
+    SizeInterface sizeInterface;
 
-    public SizeAdapter(Context context, List<SizesItem> sizeItems) {
+    public SizeAdapter(Context context, List<SizesItem> sizeItems, SizeInterface sizeInterface) {
         this.context = context;
         this.sizeItems = sizeItems;
+        this.sizeInterface = sizeInterface;
     }
 
     public void setSizeItems(List<SizesItem> sizeItems) {
@@ -54,6 +57,7 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeAdapter.SizeViewHolder
             if (checkedPositionSize != holder.getAdapterPosition()){
                 notifyItemChanged(checkedPositionSize);
                 checkedPositionSize = holder.getAdapterPosition();
+                sizeInterface.onSizeSelect(sizeItems.get(position));
             }else if(checkedPositionSize == holder.getAdapterPosition()){
                 notifyItemChanged(checkedPositionSize);
             }

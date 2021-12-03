@@ -1,5 +1,6 @@
 package com.marco_nagy.e_commerce.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.marco_nagy.e_commerce.MainActivity;
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.data.SharedPref;
 import com.marco_nagy.e_commerce.databinding.FragmentMoreBinding;
@@ -34,8 +36,8 @@ FragmentMoreBinding binding;
             @Override
             public void onClick(View v) {
                 SharedPref.clearAll();
-                getActivity().finish();
-            }
+                startActivity( new Intent(getContext(), MainActivity.class));
+                }
         });
     }
 }

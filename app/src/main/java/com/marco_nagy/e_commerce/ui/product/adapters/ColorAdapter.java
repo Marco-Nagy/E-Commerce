@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.databinding.ColorItemBinding;
 import com.marco_nagy.e_commerce.ui.models.ColorItem;
+import com.marco_nagy.e_commerce.ui.product.ColorInterface;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -25,10 +26,13 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ColorViewHol
     private Context context;
     private List<ColorItem> colorItems;
     public static int checkedPosition = -1;
+    ColorInterface colorInterface;
 
-    public ColorAdapter(Context context, List<ColorItem> colorItems) {
+
+    public ColorAdapter(Context context, List<ColorItem> colorItems, ColorInterface colorInterface) {
         this.context = context;
         this.colorItems = colorItems;
+        this.colorInterface =colorInterface;
     }
 
     public void setColorItems(ArrayList<ColorItem> colorItems) {
@@ -64,6 +68,7 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ColorViewHol
             if (checkedPosition != holder.getAdapterPosition()) {
                 notifyItemChanged(checkedPosition);
                 checkedPosition = holder.getAdapterPosition();
+               colorInterface.onColorSelect(colorItems.get(position));
             } else if (checkedPosition == holder.getAdapterPosition()) {
                 notifyItemChanged(checkedPosition);
             }
