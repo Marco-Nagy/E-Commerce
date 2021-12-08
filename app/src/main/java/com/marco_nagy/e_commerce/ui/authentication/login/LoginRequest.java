@@ -29,6 +29,11 @@ public class LoginRequest  {
         this.token = token;
     }
 
+    public LoginRequest(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }

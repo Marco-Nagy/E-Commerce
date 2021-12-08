@@ -10,6 +10,7 @@ public class SharedPref
       SharedPreferences.Editor prefsEditor = mSharedPref.edit();
     public static final String Token = "token";
     public static final String EMAIL = "email";
+    public static final String PASSWORD = "password";
     public static final String IS_SELECT = "IS_SELECT";
 
     private SharedPref()

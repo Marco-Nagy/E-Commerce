@@ -1,4 +1,4 @@
-package com.marco_nagy.e_commerce.ui.cart;
+package com.marco_nagy.e_commerce.ui.cart.addToCartModel;
 
 import com.google.gson.annotations.SerializedName;
 

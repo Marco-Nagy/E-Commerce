@@ -11,25 +11,37 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.marco_nagy.e_commerce.R;
+import com.marco_nagy.e_commerce.data.AppNetworkBuilder;
+import com.marco_nagy.e_commerce.data.SharedPref;
 import com.marco_nagy.e_commerce.databinding.FragmentCartBinding;
+import com.marco_nagy.e_commerce.ui.cart.addModel.Data;
+import com.marco_nagy.e_commerce.ui.cart.getCartModel.DataItem;
+import com.marco_nagy.e_commerce.ui.cart.getCartModel.GetCartResponse;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class CartFragment extends Fragment {
-FragmentCartBinding binding;
-
-
+    FragmentCartBinding binding;
+    static  String token = SharedPref.read(SharedPref.Token, null);
+    List<DataItem> dataItemList;
+    CartAdapter cartAdapter;
+    Data data;
+    private static final String TAG = "CartFragment";
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_cart, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_cart, container, false);
         return binding.getRoot();
 
     }
@@ -37,26 +49,54 @@ FragmentCartBinding binding;
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setRecentlyRecyclerView();
+        getCart();
         binding.checkoutBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),CheckoutActivity.class));
+                startActivity(new Intent(getContext(), CheckoutActivity.class));
             }
         });
 
     }
-    public void setRecentlyRecyclerView(){
-        List<CartItems> cartItems = new ArrayList<>();
-        cartItems.add(new CartItems(R.drawable.women_shoes, R.string.ankle_boots,49.99));
-        cartItems.add(new CartItems(R.drawable.backpack, R.string.back_pack,20.58));
-        cartItems.add(new CartItems(R.drawable.scarf, R.string.red_scarf,11.00));
-        cartItems.add(new CartItems(R.drawable.women_shoes, R.string.ankle_boots,49.99));
 
-        CartAdapter cartAdapter = new CartAdapter(cartItems,getContext());
-        binding.cartRV.setLayoutManager(new LinearLayoutManager(getContext(),
-                LinearLayoutManager.VERTICAL, false));
-        binding.cartRV.setAdapter(cartAdapter);
+    public void getCart() {
+
+        AppNetworkBuilder.getClient().getCart(token).enqueue(new Callback<GetCartResponse>() {
+
+            @Override
+            public void onResponse(@NotNull Call<GetCartResponse> call, @NotNull Response<GetCartResponse> response) {
+                if (response.isSuccessful()) {
+                    assert response.body() != null;
+
+                    dataItemList = response.body().getData();
+                    setCartRecyclerView();
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<GetCartResponse> call, Throwable t) {
+
+
+            }
+        });
 
     }
+
+    public void setCartRecyclerView() {
+
+        cartAdapter = new CartAdapter(dataItemList, getContext(), cartInterface);
+        binding.cartRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+        binding.cartRV.setAdapter(cartAdapter);
+    }
+
+    CartInterface cartInterface = new CartInterface() {
+
+        @Override
+        public void onAddToCartClick(DataItem cartItem) {
+            Intent intent = new Intent(getContext(), CheckoutActivity.class);
+
+            intent.putExtra("cartItem", cartItem);
+            startActivity(intent);
+        }
+    };
 }

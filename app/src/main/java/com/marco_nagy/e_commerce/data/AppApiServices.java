@@ -4,8 +4,10 @@ import com.marco_nagy.e_commerce.ui.authentication.login.LoginRequest;
 import com.marco_nagy.e_commerce.ui.authentication.login.LoginResponse;
 import com.marco_nagy.e_commerce.ui.authentication.signup.SignupRequest;
 import com.marco_nagy.e_commerce.ui.authentication.signup.SignupResponse;
-import com.marco_nagy.e_commerce.ui.cart.AddToCartRequest;
-import com.marco_nagy.e_commerce.ui.cart.AddToCartResponse;
+import com.marco_nagy.e_commerce.ui.cart.addModel.AddResponse;
+import com.marco_nagy.e_commerce.ui.cart.addToCartModel.AddToCartRequest;
+import com.marco_nagy.e_commerce.ui.cart.addToCartModel.AddToCartResponse;
+import com.marco_nagy.e_commerce.ui.cart.getCartModel.GetCartResponse;
 import com.marco_nagy.e_commerce.ui.home.latest.LatestResponse;
 import com.marco_nagy.e_commerce.ui.search.model.SearchRequest;
 import com.marco_nagy.e_commerce.ui.search.model.SearchResponse;
@@ -15,6 +17,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface AppApiServices {
     @POST("api/register")
@@ -30,6 +33,13 @@ public interface AppApiServices {
                                       @Header("Authorization")String token);
     @POST("api/search")
     Call<SearchResponse> getSearch(@Body SearchRequest searchRequest);
+
+    @GET("api/cart")
+    Call<GetCartResponse> getCart(@Header("Authorization")String token);
+
+    @GET("api/add-qty/{quantity}")
+    Call<AddResponse> getAddQuantity(@Path("quantity") int quantity,
+                                     @Header("Authorization")String token);
 
 
 }

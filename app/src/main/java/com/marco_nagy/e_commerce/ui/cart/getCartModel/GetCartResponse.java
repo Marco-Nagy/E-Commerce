@@ -1,11 +1,14 @@
-package com.marco_nagy.e_commerce.ui.cart;
+package com.marco_nagy.e_commerce.ui.cart.getCartModel;
 
 import com.google.gson.annotations.SerializedName;
 
-public class AddToCartResponse{
+import java.io.Serializable;
+import java.util.List;
 
-	@SerializedName("addToCartRequest")
-	private AddToCartRequest addToCartRequest;
+public class GetCartResponse implements Serializable {
+
+	@SerializedName("data")
+	private List<DataItem> data;
 
 	@SerializedName("message")
 	private String message;
@@ -13,12 +16,12 @@ public class AddToCartResponse{
 	@SerializedName("status")
 	private boolean status;
 
-	public void setData(AddToCartRequest addToCartRequest){
-		this.addToCartRequest = addToCartRequest;
+	public void setData(List<DataItem> data){
+		this.data = data;
 	}
 
-	public AddToCartRequest getData(){
-		return addToCartRequest;
+	public List<DataItem> getData(){
+		return data;
 	}
 
 	public void setMessage(String message){
@@ -40,8 +43,8 @@ public class AddToCartResponse{
 	@Override
  	public String toString(){
 		return 
-			"AddToCartResponse{" + 
-			"addToCartRequest = '" + addToCartRequest + '\'' +
+			"GetCartResponse{" + 
+			"data = '" + data + '\'' + 
 			",message = '" + message + '\'' + 
 			",status = '" + status + '\'' + 
 			"}";

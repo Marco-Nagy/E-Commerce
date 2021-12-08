@@ -7,19 +7,17 @@
 
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="#F5F6F8"
-        tools:context=".ui.cart.CartFragment"
-        android:weightSum="6">
+        android:orientation="vertical"
+        tools:context=".ui.cart.CartFragment">
 
         <TextView
             android:id="@+id/categoryTextV"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".7"
+            android:layout_height="wrap_content"
             android:background="@drawable/gradient_item_bg"
             android:fontFamily="@font/neusa_next_std_bold"
             android:padding="@dimen/_10sdp"
@@ -28,21 +26,23 @@
             android:textColor="#515C6F"
             android:textSize="@dimen/_22ssp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/cart_RV"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cart_RV"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4.3"
-            app:layout_constraintTop_toBottomOf="@id/categoryTextV"
+            app:layout_constraintTop_toBottomOf="@+id/categoryTextV"
             tools:listitem="@layout/cart_item"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="5"/>
+            app:layout_constraintBottom_toTopOf="@id/total_view"/>
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/total_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/cart_RV"
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView
                 android:id="@+id/totalTextV"
@@ -57,18 +57,19 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/amountTextV"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/amountTextV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/neusa_next_std_bold"
                 android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/neusa_next_std_bold"
                 android:text="@string/_81_57"
                 android:textColor="#515C6F"
                 android:textSize="@dimen/_20ssp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/totalTextV" />
+                app:layout_constraintTop_toBottomOf="@id/totalTextV" />
 
             <TextView
                 android:id="@+id/shippingTextV"
@@ -88,23 +89,22 @@
             <TextView
                 android:id="@+id/checkout_BTN"
                 android:layout_width="@dimen/_175sdp"
-                android:layout_height="@dimen/_70sdp"
-                android:scaleType="centerCrop"
+                android:layout_height="wrap_content"
                 android:background="@drawable/checkout_btn"
-                android:text="@string/checkout"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textAllCaps="true"
                 android:elevation="@dimen/_6sdp"
-                android:paddingEnd="@dimen/_20sdp"
-                android:textSize="@dimen/_12ssp"
+                android:gravity="center"
                 android:paddingBottom="@dimen/_10sdp"
+                android:scaleType="centerCrop"
+                android:text="@string/checkout"
+                android:textAllCaps="true"
                 android:textColor="@color/white"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

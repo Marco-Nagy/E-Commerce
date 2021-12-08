@@ -6,13 +6,14 @@
     <data>
         <variable
             name="item"
-            type="com.marco_nagy.e_commerce.ui.cart.CartItems" />
+            type="com.marco_nagy.e_commerce.ui.cart.getCartModel.DataItem" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="#F6F7F9"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#F6F7F9">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView2"
@@ -38,38 +39,40 @@
             android:id="@+id/item_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+
+            android:text="@string/ankle_boots"
             android:textColor="#515C6F"
             android:textSize="@dimen/_15ssp"
-            android:fontFamily="@font/neusa_next_std_bold"
-            android:layout_marginStart="@dimen/_15sdp"
+            app:layout_constraintBottom_toTopOf="@id/item_details"
             app:layout_constraintStart_toEndOf="@+id/cardView2"
             app:layout_constraintTop_toTopOf="@+id/cardView2"
-            app:layout_constraintBottom_toTopOf="@id/item_details"
-            android:text="@string/ankle_boots" />
+            tools:text="@string/ankle_boots" />
 
         <TextView
             android:id="@+id/item_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:fontFamily="sans-serif-light"
+
+            tools:text="@string/_7_hot_pink"
             android:textColor="#515C6F"
             android:textSize="@dimen/_15ssp"
-            android:fontFamily="sans-serif-light"
-            android:layout_marginStart="@dimen/_15sdp"
-            app:layout_constraintStart_toEndOf="@+id/cardView2"
-            app:layout_constraintTop_toBottomOf="@+id/item_title"
             app:layout_constraintBottom_toTopOf="@id/product_price"
-            android:text="@string/_7_hot_pink" />
+            app:layout_constraintStart_toEndOf="@+id/cardView2"
+            app:layout_constraintTop_toBottomOf="@+id/item_title" />
 
         <TextView
             android:id="@+id/product_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
             android:elevation="@dimen/_6sdp"
             android:fontFamily="@font/neusa_next_std_bold"
-            android:text="@{`$`.concat(Double.toString(item.price))}"
+
             android:textColor="@color/rose"
             android:textSize="@dimen/_12ssp"
-            android:layout_margin="@dimen/_15sdp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/cardView2"
             app:layout_constraintTop_toBottomOf="@+id/item_details"
@@ -83,33 +86,54 @@
             app:layout_constraintStart_toEndOf="@+id/cardView2"
             app:layout_constraintTop_toBottomOf="@id/product_price">
 
-            <ImageButton
-                android:id="@+id/remove_Btn"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_margin="@dimen/_4sdp"
-                android:src="@drawable/remove_small" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/remove_btn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                android:layout_width="@dimen/_23sdp"
+                android:layout_height="@dimen/_23sdp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                app:icon="@drawable/remove_small"
+                app:strokeColor="@color/rose"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="@dimen/_20sdp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+
 
             <TextView
                 android:id="@+id/quantityText"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_margin="@dimen/_4sdp"
-                android:inputType="number"
                 android:fontFamily="@font/neusa_next_std_bold"
                 android:gravity="center"
-                android:text="1"
+
+                tools:text="1"
                 android:textColor="#727C8E"
                 android:textSize="@dimen/_15sdp" />
 
-            <ImageButton
-                android:id="@+id/add_Btn"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="23dp"
-                android:layout_margin="@dimen/_4sdp"
-                android:src="@drawable/add" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/add_btn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                android:layout_width="@dimen/_23sdp"
+                android:layout_height="@dimen/_23sdp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                app:strokeColor="@color/green"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                app:icon="@drawable/add_small"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="24dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
         </LinearLayout>
 
         <View
@@ -122,4 +146,5 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
