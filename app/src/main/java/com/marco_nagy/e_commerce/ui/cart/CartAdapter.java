@@ -12,11 +12,15 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.data.AppNetworkBuilder;
+import com.marco_nagy.e_commerce.data.SharedPref;
 import com.marco_nagy.e_commerce.databinding.CartItemBinding;
 import com.marco_nagy.e_commerce.ui.cart.addModel.AddResponse;
 import com.marco_nagy.e_commerce.ui.cart.getCartModel.DataItem;
+import com.marco_nagy.e_commerce.ui.cart.removeModel.RemoveResponse;
+import com.marco_nagy.e_commerce.ui.cart.subModel.SubResponse;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -26,11 +30,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder>{
+public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
     List<DataItem> dataItemList;
     Context context;
     CartInterface cartInterface;
+    String token = SharedPref.read(SharedPref.Token, null);
+    int quantity;
+    String strQuantity;
     private static final String TAG = "CartAdapter";
+
     public CartAdapter(List<DataItem> dataItemList, Context context, CartInterface cartInterface) {
         this.dataItemList = dataItemList;
         this.context = context;
@@ -41,18 +49,17 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     @NotNull
     @Override
     public CartViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        return  new CartAdapter.CartViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
+        return new CartAdapter.CartViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
                 R.layout.cart_item, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull CartAdapter.CartViewHolder holder, int position) {
-        DataItem items= dataItemList.get(position);
+        DataItem items = dataItemList.get(position);
         holder.binding.setItem(items);
-        if(items.getProductId().getImages().isEmpty()){
+        if (items.getProductId().getImages().isEmpty()) {
             holder.binding.imageItem.setImageResource(R.mipmap.online_shopping_foreground);
-        }
-        else{
+        } else {
             Glide.with(context).load(items.getProductId().getImages().get(0).getImage()).placeholder(R.mipmap.online_shopping_foreground).into(holder.binding.imageItem);
 
         }
@@ -60,26 +67,83 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.binding.productPrice.setText(items.getProductId().getPrice());
         holder.binding.quantityText.setText(items.getQuantity());
         holder.binding.itemDetails.setText(items.getProductId().getDescription());
-        holder.binding.addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AppNetworkBuilder.getClient().getAddQuantity(Integer.parseInt(items.getQuantity()),CartFragment.token).enqueue(new Callback<AddResponse>() {
+        holder.binding.addBtn.setOnClickListener(v ->
+                AppNetworkBuilder.getClient().getAddQuantity(items.getProductId().getItemId(), token).enqueue(new Callback<AddResponse>() {
                     @Override
-                    public void onResponse(Call<AddResponse> call, Response<AddResponse> response) {
-                        if (response.isSuccessful()){
+                    public void onResponse(@NotNull Call<AddResponse> call, @NotNull Response<AddResponse> response) {
+                        if (response.isSuccessful()) {
                             assert response.body() != null;
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                            Log.i(TAG, "onResponse: addBtn=> "+response.body().getData());
-                            Log.i(TAG, "onResponse: addBtn=> "+response.body().getMessage());
+                            Log.i(TAG, "onResponse: addBtn=> " + response.body().getData());
+                            Log.i(TAG, "onResponse: addBtn=> " + response.body().getMessage());
+                            quantity = response.body().getData().getQuantity();
+                            strQuantity = Integer.toString(quantity);
+                            holder.binding.quantityText.setText(strQuantity);
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<AddResponse> call, Throwable t) {
+                    public void onFailure(@NotNull Call<AddResponse> call, @NotNull Throwable t) {
+
+                    }
+                }));
+        holder.binding.subBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(quantity<=1){
+                    return;
+                }
+                AppNetworkBuilder.getClient().getSubQuantity(items.getProductId().getItemId(), token).enqueue(new Callback<SubResponse>() {
+                    @Override
+                    public void onResponse(@NotNull Call<SubResponse> call, @NotNull Response<SubResponse> response) {
+                        if (response.isSuccessful()) {
+                            assert response.body() != null;
+                            quantity = response.body().getData().getQuantity();
+                            strQuantity = Integer.toString(quantity);
+                            Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.i(TAG, "onResponse: addBtn=> " + response.body().getData());
+                            Log.i(TAG, "onResponse: addBtn=> " + response.body().getMessage());
+                            holder.binding.quantityText.setText(strQuantity);
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull Call<SubResponse> call, @NotNull Throwable t) {
 
                     }
                 });
             }
+        });
+        holder.binding.removeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppNetworkBuilder.getClient().removeItem(items.getProductId().getItemId(), token).enqueue(new Callback<RemoveResponse>() {
+                    @Override
+                    public void onResponse(@NotNull Call<RemoveResponse> call, @NotNull Response<RemoveResponse> response) {
+                        if (response.isSuccessful()) {
+                            assert response.body() != null;
+
+                            Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.i(TAG, "onResponse: removed Item "+response.body().getData());
+
+                        }else {
+                            assert response.errorBody() != null;
+                            RemoveResponse message = new Gson().fromJson(response.errorBody().charStream(), RemoveResponse.class);
+
+                            Log.i(TAG, "onResponse: removed Item "+message.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull Call<RemoveResponse> call, @NotNull Throwable t) {
+                        Log.i(TAG, "onFailure: remove "+t.getLocalizedMessage());
+                    }
+                }) ;
+                dataItemList.remove(position);
+                CartAdapter.this.notifyItemRemoved(position);
+            }
+
         });
 
 
@@ -91,11 +155,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     }
 
     public static class CartViewHolder extends RecyclerView.ViewHolder {
-         CartItemBinding binding;
+        CartItemBinding binding;
 
         public CartViewHolder(@NonNull @NotNull CartItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
     }
+
 }

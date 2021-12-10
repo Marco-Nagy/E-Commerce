@@ -32,7 +32,7 @@ import retrofit2.Response;
 
 public class CartFragment extends Fragment {
     FragmentCartBinding binding;
-    static  String token = SharedPref.read(SharedPref.Token, null);
+     String token = SharedPref.read(SharedPref.Token, null);
     List<DataItem> dataItemList;
     CartAdapter cartAdapter;
     Data data;
@@ -70,6 +70,7 @@ public class CartFragment extends Fragment {
 
                     dataItemList = response.body().getData();
                     setCartRecyclerView();
+
                 }
             }
 
@@ -85,8 +86,11 @@ public class CartFragment extends Fragment {
     public void setCartRecyclerView() {
 
         cartAdapter = new CartAdapter(dataItemList, getContext(), cartInterface);
+
         binding.cartRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         binding.cartRV.setAdapter(cartAdapter);
+
+
     }
 
     CartInterface cartInterface = new CartInterface() {

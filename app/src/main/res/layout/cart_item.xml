@@ -87,7 +87,7 @@
             app:layout_constraintTop_toBottomOf="@id/product_price">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/remove_btn"
+                android:id="@+id/sub_btn"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
                 android:layout_width="@dimen/_23sdp"
                 android:layout_height="@dimen/_23sdp"
@@ -134,8 +134,29 @@
                 app:iconPadding="0dp"
                 app:iconSize="24dp"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+
         </LinearLayout>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/remove_btn"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginVertical="@dimen/_4sdp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            app:icon="@drawable/delete"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+            android:layout_marginBottom="@dimen/_30sdp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle"
+            app:strokeColor="@color/blue_black" />
         <View
             android:layout_width="0dp"
             android:layout_height="@dimen/_1sdp"
