@@ -124,9 +124,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                         if (response.isSuccessful()) {
                             assert response.body() != null;
 
+
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             Log.i(TAG, "onResponse: removed Item "+response.body().getData());
-
+                            dataItemList.remove(position);
+                            CartAdapter.this.notifyItemRemoved(position);
                         }else {
                             assert response.errorBody() != null;
                             RemoveResponse message = new Gson().fromJson(response.errorBody().charStream(), RemoveResponse.class);
@@ -140,8 +142,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                         Log.i(TAG, "onFailure: remove "+t.getLocalizedMessage());
                     }
                 }) ;
-                dataItemList.remove(position);
-                CartAdapter.this.notifyItemRemoved(position);
+
             }
 
         });
