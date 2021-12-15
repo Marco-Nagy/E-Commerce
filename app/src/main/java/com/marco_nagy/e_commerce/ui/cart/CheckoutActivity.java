@@ -125,8 +125,7 @@ public class CheckoutActivity extends AppCompatActivity {
                         longitude =SharedPref.read(SharedPref.LNG,null);
                         if (longitude != null ){
                            latLng = new LatLng(Double.parseDouble(latitude),Double.parseDouble(longitude));
-                        }
-                        if (task.isSuccessful() && task.getResult() != null) {
+                        }else if (task.isSuccessful() && task.getResult() != null) {
 
                             latLng = new LatLng(task.getResult().getLatitude(), task.getResult().getLongitude());
 

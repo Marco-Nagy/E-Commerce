@@ -147,7 +147,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 new PlaceOrderRequest(String.valueOf(latitude),String.valueOf(longitude)), SharedPref.read(SharedPref.Token,null))
                 .enqueue(new Callback<PlaceOrderResponse>() {
                     @Override
-                    public void onResponse(Call<PlaceOrderResponse> call, Response<PlaceOrderResponse> response) {
+                    public void onResponse(@NotNull Call<PlaceOrderResponse> call, Response<PlaceOrderResponse> response) {
                         if(response.isSuccessful()){
                             SharedPref.write(SharedPref.LAT,String.valueOf(latitude));
                             SharedPref.write(SharedPref.LNG,String.valueOf(longitude));
@@ -155,13 +155,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             assert response.body() != null;
                             Toast.makeText(MapsActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }else {
+                            assert response.errorBody() != null;
                             PlaceOrderResponse message = new Gson().fromJson(response.errorBody().charStream(), PlaceOrderResponse.class);
                             Toast.makeText(MapsActivity.this, "" + message.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<PlaceOrderResponse> call, Throwable t) {
+                    public void onFailure(@NotNull Call<PlaceOrderResponse> call, Throwable t) {
 
                     }
                 });
