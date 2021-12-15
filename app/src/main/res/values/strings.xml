@@ -108,4 +108,6 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="shop">SHOP</string>
     <string name="now">NOW</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="confirm_your_location">Confirm Your location</string>
 </resources>

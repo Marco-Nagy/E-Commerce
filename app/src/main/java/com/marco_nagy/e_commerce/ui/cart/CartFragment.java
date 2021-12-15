@@ -1,10 +1,13 @@
 package com.marco_nagy.e_commerce.ui.cart;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,7 +20,6 @@ import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.data.AppNetworkBuilder;
 import com.marco_nagy.e_commerce.data.SharedPref;
 import com.marco_nagy.e_commerce.databinding.FragmentCartBinding;
-import com.marco_nagy.e_commerce.ui.cart.addModel.Data;
 import com.marco_nagy.e_commerce.ui.cart.getCartModel.DataItem;
 import com.marco_nagy.e_commerce.ui.cart.getCartModel.GetCartResponse;
 
@@ -32,11 +34,13 @@ import retrofit2.Response;
 
 public class CartFragment extends Fragment {
     FragmentCartBinding binding;
-     String token = SharedPref.read(SharedPref.Token, null);
+    String token = SharedPref.read(SharedPref.Token, null);
     List<DataItem> dataItemList;
     CartAdapter cartAdapter;
-    Data data;
+    double totalAmount = 0.0;
+    TextView amountTextV;
     private static final String TAG = "CartFragment";
+
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,6 +50,7 @@ public class CartFragment extends Fragment {
 
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -57,6 +62,8 @@ public class CartFragment extends Fragment {
             }
         });
 
+
+
     }
 
     public void getCart() {
@@ -67,15 +74,17 @@ public class CartFragment extends Fragment {
             public void onResponse(@NotNull Call<GetCartResponse> call, @NotNull Response<GetCartResponse> response) {
                 if (response.isSuccessful()) {
                     assert response.body() != null;
-
+                    Log.i(TAG, "onResponse: getCart =>> " + response.body().getData().toString());
                     dataItemList = response.body().getData();
+                    countAmount();
+
                     setCartRecyclerView();
 
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<GetCartResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<GetCartResponse> call, @NotNull Throwable t) {
 
 
             }
@@ -89,6 +98,28 @@ public class CartFragment extends Fragment {
 
         binding.cartRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         binding.cartRV.setAdapter(cartAdapter);
+
+
+    }
+
+    public void countAmount() {
+
+        for (int i = 0; i < dataItemList.size(); i++) {
+            double amount = Double.parseDouble(dataItemList.get(i).getQuantity())
+                    * Double.parseDouble(dataItemList.get(i).getProductId().getPrice());
+            totalAmount = totalAmount + amount;
+
+
+        }
+
+        Bundle arguments = getArguments();
+        if (arguments!=null){
+            String amount= arguments.get("totalAmount").toString();
+            binding.amountTextV.setText(amount);
+        }else {
+            binding.amountTextV.setText(String.valueOf(totalAmount));
+        }
+        Log.i(TAG, "onResponse: totalAmount " + totalAmount);
 
 
     }

@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:fontFamily="@font/neusa_next_std_bold"
-                android:text="@string/_81_57"
+                tools:text="@string/_81_57"
                 android:textColor="#515C6F"
                 android:textSize="@dimen/_20ssp"
                 android:textStyle="bold"

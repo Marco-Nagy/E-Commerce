@@ -1,6 +1,7 @@
 package com.marco_nagy.e_commerce.ui.cart;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,8 +38,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     String token = SharedPref.read(SharedPref.Token, null);
     int quantity;
     String strQuantity;
+    double totalAmount =0.0;
+    double amount;
+    String itemPrice;
+    String itemQuantity;
     private static final String TAG = "CartAdapter";
-
+    CartFragment cartFragment = new CartFragment();
     public CartAdapter(List<DataItem> dataItemList, Context context, CartInterface cartInterface) {
         this.dataItemList = dataItemList;
         this.context = context;
@@ -64,14 +69,20 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
         }
         holder.binding.itemTitle.setText(items.getProductId().getItemName());
-        holder.binding.productPrice.setText(items.getProductId().getPrice());
-        holder.binding.quantityText.setText(items.getQuantity());
+
+        itemPrice =items.getProductId().getPrice();
+        holder.binding.productPrice.setText(itemPrice);
+
+        itemQuantity =items.getQuantity();
+        holder.binding.quantityText.setText(itemQuantity);
+
         holder.binding.itemDetails.setText(items.getProductId().getDescription());
         holder.binding.addBtn.setOnClickListener(v ->
                 AppNetworkBuilder.getClient().getAddQuantity(items.getProductId().getItemId(), token).enqueue(new Callback<AddResponse>() {
                     @Override
                     public void onResponse(@NotNull Call<AddResponse> call, @NotNull Response<AddResponse> response) {
                         if (response.isSuccessful()) {
+
                             assert response.body() != null;
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             Log.i(TAG, "onResponse: addBtn=> " + response.body().getData());
@@ -79,6 +90,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                             quantity = response.body().getData().getQuantity();
                             strQuantity = Integer.toString(quantity);
                             holder.binding.quantityText.setText(strQuantity);
+                            countAmount();
+
                         }
                     }
 
@@ -90,7 +103,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.binding.subBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(quantity<=1){
+                if (quantity <= 1) {
                     return;
                 }
                 AppNetworkBuilder.getClient().getSubQuantity(items.getProductId().getItemId(), token).enqueue(new Callback<SubResponse>() {
@@ -98,6 +111,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                     public void onResponse(@NotNull Call<SubResponse> call, @NotNull Response<SubResponse> response) {
                         if (response.isSuccessful()) {
                             assert response.body() != null;
+
                             quantity = response.body().getData().getQuantity();
                             strQuantity = Integer.toString(quantity);
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -106,6 +120,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                             holder.binding.quantityText.setText(strQuantity);
 
                         }
+                        countAmount();
                     }
 
                     @Override
@@ -126,26 +141,29 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
 
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                            Log.i(TAG, "onResponse: removed Item "+response.body().getData());
+                            Log.i(TAG, "onResponse: removed Item " + response.body().getData());
                             dataItemList.remove(position);
+
                             CartAdapter.this.notifyItemRemoved(position);
-                        }else {
+
+                        } else {
                             assert response.errorBody() != null;
                             RemoveResponse message = new Gson().fromJson(response.errorBody().charStream(), RemoveResponse.class);
 
-                            Log.i(TAG, "onResponse: removed Item "+message.getMessage());
+                            Log.i(TAG, "onResponse: removed Item " + message.getMessage());
                         }
                     }
 
                     @Override
                     public void onFailure(@NotNull Call<RemoveResponse> call, @NotNull Throwable t) {
-                        Log.i(TAG, "onFailure: remove "+t.getLocalizedMessage());
+                        Log.i(TAG, "onFailure: remove " + t.getLocalizedMessage());
                     }
-                }) ;
-
+                });
+                countAmount();
             }
 
         });
+
 
 
     }
@@ -161,7 +179,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         public CartViewHolder(@NonNull @NotNull CartItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+
         }
+    }
+
+    public void countAmount() {
+        for (int i = 0; i < dataItemList.size(); i++) {
+            amount = Double.parseDouble(itemPrice)
+                    * Double.parseDouble(itemQuantity);
+
+        }
+        totalAmount = totalAmount + amount;
+        Bundle bundle=new Bundle();
+        bundle.putDouble("totalAmount",totalAmount);
+        cartFragment.setArguments(bundle);
+        Log.i(TAG, "onResponse: totalAmount " + totalAmount);
     }
 
 }

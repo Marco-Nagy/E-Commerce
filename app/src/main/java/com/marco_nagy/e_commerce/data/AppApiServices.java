@@ -8,6 +8,8 @@ import com.marco_nagy.e_commerce.ui.cart.addModel.AddResponse;
 import com.marco_nagy.e_commerce.ui.cart.addToCartModel.AddToCartRequest;
 import com.marco_nagy.e_commerce.ui.cart.addToCartModel.AddToCartResponse;
 import com.marco_nagy.e_commerce.ui.cart.getCartModel.GetCartResponse;
+import com.marco_nagy.e_commerce.ui.cart.placeOrderModel.PlaceOrderRequest;
+import com.marco_nagy.e_commerce.ui.cart.placeOrderModel.PlaceOrderResponse;
 import com.marco_nagy.e_commerce.ui.cart.removeModel.RemoveResponse;
 import com.marco_nagy.e_commerce.ui.cart.subModel.SubResponse;
 import com.marco_nagy.e_commerce.ui.home.latest.LatestResponse;
@@ -51,5 +53,9 @@ public interface AppApiServices {
     @POST("api/remove-item/{item_id}")
     Call<RemoveResponse> removeItem(@Path("item_id") int itemId,
                                     @Header("Authorization")String token);
+
+    @POST("api/place-order")
+    Call<PlaceOrderResponse> addPlaceOrder(@Body PlaceOrderRequest placeOrderRequest,
+                                           @Header("Authorization")String token);
 
 }

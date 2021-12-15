@@ -12,6 +12,10 @@ public class SharedPref
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
     public static final String IS_SELECT = "IS_SELECT";
+    public static final String LAT = "latitude";
+    public static final String LNG = "longitude";
+    public static final String MY_ADDRESS = "myAddress";
+
 
     private SharedPref()
     {

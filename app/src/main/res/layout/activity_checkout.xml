@@ -13,13 +13,13 @@
         android:background="#F5F6F8"
         tools:context=".ui.cart.CheckoutActivity">
 
-        <TextView
-            android:id="@+id/textView"
+        <EditText
+            android:id="@+id/shippingTexET"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_108sdp"
             android:lines="5"
             android:padding="@dimen/_15sdp"
-            android:text="@string/address_text"
+            tools:text="@string/address_text"
             android:textColor="#515C6F"
             android:textSize="@dimen/_15sdp"
             app:drawableEndCompat="@drawable/more_small"
@@ -40,7 +40,7 @@
             app:drawableEndCompat="@drawable/more_small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/shippingTexET" />
 
         <View
             android:id="@+id/view"
@@ -80,7 +80,7 @@
             android:background="#1A515C6F"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/shippingTexET" />
 
 
         <TextView
@@ -164,7 +164,6 @@
                 app:layout_constraintTop_toBottomOf="@id/totalTextV" />
 
             <TextView
-                android:id="@+id/shippingTextV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/neusa_regular"
