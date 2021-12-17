@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
@@ -34,11 +36,23 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.gson.Gson;
 import com.marco_nagy.e_commerce.R;
+import com.marco_nagy.e_commerce.data.AppNetworkBuilder;
 import com.marco_nagy.e_commerce.data.SharedPref;
 import com.marco_nagy.e_commerce.databinding.ActivityCheckoutBinding;
+import com.marco_nagy.e_commerce.ui.cart.getCartModel.DataItem;
+import com.marco_nagy.e_commerce.ui.cart.getCartModel.GetCartResponse;
+import com.marco_nagy.e_commerce.ui.cart.placeOrderModel.PlaceOrderRequest;
+import com.marco_nagy.e_commerce.ui.cart.placeOrderModel.PlaceOrderResponse;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CheckoutActivity extends AppCompatActivity {
     ActivityCheckoutBinding binding;
@@ -49,16 +63,19 @@ public class CheckoutActivity extends AppCompatActivity {
     private static final String TAG = "CheckoutActivity";
     protected static final int REQUEST_CHECK_SETTINGS = 0x1;
     String myAddress = SharedPref.read(SharedPref.MY_ADDRESS,null);
+    String token = SharedPref.read(SharedPref.Token, null);
+    List<DataItem> dataItemList;
+    CartAdapter cartAdapter;
+    double totalAmount = 0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_checkout);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
         getLastLocation();
         initLocationRequest();
-
+        getCart();
 //        binding.placeOrderBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -74,9 +91,50 @@ public class CheckoutActivity extends AppCompatActivity {
         if (myAddress!=null){
             binding.shippingTexET.setText(myAddress);
         }else {
-            binding.shippingTexET.setText("");
+            binding.shippingTexET.setText("Select Your Address");
         }
+        binding.shippingTexET.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (latLng == null) {
+                    Toast.makeText(CheckoutActivity.this, "Please Select Order Location", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
+                Intent intent = new Intent(CheckoutActivity.this, MapsActivity.class);
+                intent.putExtra("latLang", latLng);
+                Log.i(TAG, "onClick: " + latLng);
+                setResult(RESULT_OK, intent);
+                startActivityForResult(intent, 1);
+            }
+        });
+        binding.placeOrderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppNetworkBuilder.getClient().addPlaceOrder(
+                        new PlaceOrderRequest(String.valueOf(latitude),String.valueOf(longitude)), SharedPref.read(SharedPref.Token,null))
+                        .enqueue(new Callback<PlaceOrderResponse>() {
+                            @Override
+                            public void onResponse(@NotNull Call<PlaceOrderResponse> call, Response<PlaceOrderResponse> response) {
+                                if(response.isSuccessful()){
+                                    latitude =SharedPref.read(SharedPref.LAT,null);
+                                    longitude =SharedPref.read(SharedPref.LNG,null);
+                                    assert response.body() != null;
+                                    Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                }else {
+                                    assert response.errorBody() != null;
+                                    PlaceOrderResponse message = new Gson().fromJson(response.errorBody().charStream(), PlaceOrderResponse.class);
+                                    Toast.makeText(getApplicationContext(), "" + message.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(@NotNull Call<PlaceOrderResponse> call, Throwable t) {
+
+                            }
+                        });
+            }
+        });
     }
 
     private void askLocationPermission() {
@@ -142,20 +200,8 @@ public class CheckoutActivity extends AppCompatActivity {
                         }
                     }
                 });
-        binding.placeOrderBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (latLng == null) {
-                    Toast.makeText(CheckoutActivity.this, "Please Select Order Location", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                Intent intent = new Intent(CheckoutActivity.this, MapsActivity.class);
-                intent.putExtra("latLang", latLng);
-                Log.i(TAG, "onClick: " + latLng);
-                setResult(RESULT_OK, intent);
-                startActivityForResult(intent, 1);
-            }
-        });
+
+
     }
 
     @Override
@@ -317,5 +363,64 @@ public class CheckoutActivity extends AppCompatActivity {
                 Log.i(TAG, "onLocationResult: " + location.getLongitude());
             }
         }
+    };
+
+
+    public void getCart() {
+
+        AppNetworkBuilder.getClient().getCart(token).enqueue(new Callback<GetCartResponse>() {
+
+            @Override
+            public void onResponse(@NotNull Call<GetCartResponse> call, @NotNull Response<GetCartResponse> response) {
+                if (response.isSuccessful()) {
+                    assert response.body() != null;
+                    Log.i(TAG, "onResponse: getCart =>> " + response.body().getData().toString());
+                    dataItemList = response.body().getData();
+                    countAmount();
+
+                    setCartRecyclerView();
+
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<GetCartResponse> call, @NotNull Throwable t) {
+
+
+            }
+        });
+
+    }
+
+    public void setCartRecyclerView() {
+
+        cartAdapter = new CartAdapter(dataItemList, getApplicationContext(), cartInterface);
+        binding.cartRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false));
+        binding.cartRV.setAdapter(cartAdapter);
+
+
+    }
+
+    public void countAmount() {
+        totalAmount = 0.0;
+        for (int i = 0; i < dataItemList.size(); i++) {
+            double amount = Double.parseDouble(dataItemList.get(i).getQuantity())
+                    * Double.parseDouble(dataItemList.get(i).getProductId().getPrice());
+            totalAmount = totalAmount + amount;
+
+
+        }
+        binding.amountTextV.setText(String.valueOf(totalAmount));
+
+    }
+
+    CartInterface cartInterface = new CartInterface() {
+
+        @Override
+        public void onUpdateCart() {
+            countAmount();
+
+        }
+
     };
 }

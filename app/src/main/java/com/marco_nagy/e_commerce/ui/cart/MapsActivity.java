@@ -73,6 +73,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Toast.makeText(MapsActivity.this, "Please select Order Location", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                SharedPref.write(SharedPref.LAT,String.valueOf(latitude));
+                SharedPref.write(SharedPref.LNG,String.valueOf(longitude));
+                SharedPref.write(SharedPref.MY_ADDRESS,String.valueOf(myAddress));
                 Intent intent = new Intent();
                 intent.putExtra("latLang", latLang);
                 intent.putExtra("fullAddress", myAddress);
@@ -143,29 +146,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             e.printStackTrace();
             Log.i(TAG, "geLatLngGeocoder: " + e.getLocalizedMessage());
         }
-        AppNetworkBuilder.getClient().addPlaceOrder(
-                new PlaceOrderRequest(String.valueOf(latitude),String.valueOf(longitude)), SharedPref.read(SharedPref.Token,null))
-                .enqueue(new Callback<PlaceOrderResponse>() {
-                    @Override
-                    public void onResponse(@NotNull Call<PlaceOrderResponse> call, Response<PlaceOrderResponse> response) {
-                        if(response.isSuccessful()){
-                            SharedPref.write(SharedPref.LAT,String.valueOf(latitude));
-                            SharedPref.write(SharedPref.LNG,String.valueOf(longitude));
-                            SharedPref.write(SharedPref.MY_ADDRESS,String.valueOf(myAddress));
-                            assert response.body() != null;
-                            Toast.makeText(MapsActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        }else {
-                            assert response.errorBody() != null;
-                            PlaceOrderResponse message = new Gson().fromJson(response.errorBody().charStream(), PlaceOrderResponse.class);
-                            Toast.makeText(MapsActivity.this, "" + message.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
 
-                    @Override
-                    public void onFailure(@NotNull Call<PlaceOrderResponse> call, Throwable t) {
-
-                    }
-                });
     }
 
 

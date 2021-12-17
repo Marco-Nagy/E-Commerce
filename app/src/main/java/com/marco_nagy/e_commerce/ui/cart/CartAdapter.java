@@ -1,7 +1,6 @@
 package com.marco_nagy.e_commerce.ui.cart;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,7 +59,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull CartAdapter.CartViewHolder holder, int position) {
-        DataItem items = dataItemList.get(position);
+        DataItem items = dataItemList.get(holder.getAdapterPosition());
         holder.binding.setItem(items);
         if (items.getProductId().getImages().isEmpty()) {
             holder.binding.imageItem.setImageResource(R.mipmap.online_shopping_foreground);
@@ -89,8 +88,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                             Log.i(TAG, "onResponse: addBtn=> " + response.body().getMessage());
                             quantity = response.body().getData().getQuantity();
                             strQuantity = Integer.toString(quantity);
+                            dataItemList.get(holder.getAdapterPosition()).setQuantity(String.valueOf(quantity));
+
                             holder.binding.quantityText.setText(strQuantity);
-                            countAmount();
+                            cartInterface.onUpdateCart();
 
                         }
                     }
@@ -100,6 +101,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
                     }
                 }));
+
         holder.binding.subBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,9 +120,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                             Log.i(TAG, "onResponse: addBtn=> " + response.body().getData());
                             Log.i(TAG, "onResponse: addBtn=> " + response.body().getMessage());
                             holder.binding.quantityText.setText(strQuantity);
-
+                            dataItemList.get(holder.getAdapterPosition()).setQuantity(String.valueOf(quantity));
+                            cartInterface.onUpdateCart();
                         }
-                        countAmount();
+
                     }
 
                     @Override
@@ -130,9 +133,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 });
             }
         });
+
         holder.binding.removeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i(TAG, "onClick: " + items.getProductId().getItemId()+ token);
                 AppNetworkBuilder.getClient().removeItem(items.getProductId().getItemId(), token).enqueue(new Callback<RemoveResponse>() {
                     @Override
                     public void onResponse(@NotNull Call<RemoveResponse> call, @NotNull Response<RemoveResponse> response) {
@@ -142,10 +147,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             Log.i(TAG, "onResponse: removed Item " + response.body().getData());
-                            dataItemList.remove(position);
 
-                            CartAdapter.this.notifyItemRemoved(position);
-
+                            dataItemList.remove(holder.getAdapterPosition());
+                            CartAdapter.this.notifyItemRemoved(holder.getAdapterPosition());
+                            cartInterface.onUpdateCart();
                         } else {
                             assert response.errorBody() != null;
                             RemoveResponse message = new Gson().fromJson(response.errorBody().charStream(), RemoveResponse.class);
@@ -159,7 +164,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                         Log.i(TAG, "onFailure: remove " + t.getLocalizedMessage());
                     }
                 });
-                countAmount();
+
             }
 
         });
@@ -183,17 +188,5 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         }
     }
 
-    public void countAmount() {
-        for (int i = 0; i < dataItemList.size(); i++) {
-            amount = Double.parseDouble(itemPrice)
-                    * Double.parseDouble(itemQuantity);
-
-        }
-        totalAmount = totalAmount + amount;
-        Bundle bundle=new Bundle();
-        bundle.putDouble("totalAmount",totalAmount);
-        cartFragment.setArguments(bundle);
-        Log.i(TAG, "onResponse: totalAmount " + totalAmount);
-    }
 
 }

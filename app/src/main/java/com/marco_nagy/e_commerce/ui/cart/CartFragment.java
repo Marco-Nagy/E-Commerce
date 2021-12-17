@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,7 +37,6 @@ public class CartFragment extends Fragment {
     List<DataItem> dataItemList;
     CartAdapter cartAdapter;
     double totalAmount = 0.0;
-    TextView amountTextV;
     private static final String TAG = "CartFragment";
 
     @Override
@@ -61,7 +59,6 @@ public class CartFragment extends Fragment {
                 startActivity(new Intent(getContext(), CheckoutActivity.class));
             }
         });
-
 
 
     }
@@ -95,7 +92,6 @@ public class CartFragment extends Fragment {
     public void setCartRecyclerView() {
 
         cartAdapter = new CartAdapter(dataItemList, getContext(), cartInterface);
-
         binding.cartRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         binding.cartRV.setAdapter(cartAdapter);
 
@@ -103,7 +99,7 @@ public class CartFragment extends Fragment {
     }
 
     public void countAmount() {
-
+        totalAmount = 0.0;
         for (int i = 0; i < dataItemList.size(); i++) {
             double amount = Double.parseDouble(dataItemList.get(i).getQuantity())
                     * Double.parseDouble(dataItemList.get(i).getProductId().getPrice());
@@ -111,27 +107,17 @@ public class CartFragment extends Fragment {
 
 
         }
-
-        Bundle arguments = getArguments();
-        if (arguments!=null){
-            String amount= arguments.get("totalAmount").toString();
-            binding.amountTextV.setText(amount);
-        }else {
-            binding.amountTextV.setText(String.valueOf(totalAmount));
-        }
-        Log.i(TAG, "onResponse: totalAmount " + totalAmount);
-
+        binding.amountTextV.setText(String.valueOf(totalAmount));
 
     }
 
     CartInterface cartInterface = new CartInterface() {
 
         @Override
-        public void onAddToCartClick(DataItem cartItem) {
-            Intent intent = new Intent(getContext(), CheckoutActivity.class);
+        public void onUpdateCart() {
+            countAmount();
 
-            intent.putExtra("cartItem", cartItem);
-            startActivity(intent);
         }
+
     };
 }
