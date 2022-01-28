@@ -1,13 +1,11 @@
-package com.marco_nagy.e_commerce.ui.cart.placeOrderModel;
+package com.marco_nagy.e_commerce.ui.cart.checkoutModel;
 
 import com.google.gson.annotations.SerializedName;
 
-import org.jetbrains.annotations.NotNull;
-
-public class PlaceOrderResponse{
+public class CheckoutResponse{
 
 	@SerializedName("data")
-	private Data data;
+	private CheckoutData data;
 
 	@SerializedName("message")
 	private String message;
@@ -15,11 +13,11 @@ public class PlaceOrderResponse{
 	@SerializedName("status")
 	private boolean status;
 
-	public void setData(Data data){
+	public void setData(CheckoutData data){
 		this.data = data;
 	}
 
-	public Data getData(){
+	public CheckoutData getData(){
 		return data;
 	}
 
@@ -40,9 +38,9 @@ public class PlaceOrderResponse{
 	}
 
 	@Override
- 	public @NotNull String toString(){
+ 	public String toString(){
 		return 
-			"PlaceOrderResponse{" + 
+			"CheckoutResponse{" + 
 			"data = '" + data + '\'' + 
 			",message = '" + message + '\'' + 
 			",status = '" + status + '\'' + 

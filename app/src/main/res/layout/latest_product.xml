@@ -49,6 +49,7 @@
             android:fontFamily="@font/neusa_light"
             tools:text="@string/red_scarf"
             android:text="@{item.itemName}"
+            android:maxLength="12"
             android:textSize="@dimen/_12ssp"
             android:textStyle="bold"
             android:textColor="#515C6F"

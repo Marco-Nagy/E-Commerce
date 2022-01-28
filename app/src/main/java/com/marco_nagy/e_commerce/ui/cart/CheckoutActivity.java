@@ -41,6 +41,7 @@ import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.data.AppNetworkBuilder;
 import com.marco_nagy.e_commerce.data.SharedPref;
 import com.marco_nagy.e_commerce.databinding.ActivityCheckoutBinding;
+import com.marco_nagy.e_commerce.ui.cart.checkoutModel.CheckoutResponse;
 import com.marco_nagy.e_commerce.ui.cart.getCartModel.DataItem;
 import com.marco_nagy.e_commerce.ui.cart.getCartModel.GetCartResponse;
 import com.marco_nagy.e_commerce.ui.cart.placeOrderModel.PlaceOrderRequest;
@@ -112,15 +113,36 @@ public class CheckoutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AppNetworkBuilder.getClient().addPlaceOrder(
-                        new PlaceOrderRequest(String.valueOf(latitude),String.valueOf(longitude)), SharedPref.read(SharedPref.Token,null))
+                        new PlaceOrderRequest(String.valueOf(latitude),String.valueOf(longitude)),token)
                         .enqueue(new Callback<PlaceOrderResponse>() {
                             @Override
                             public void onResponse(@NotNull Call<PlaceOrderResponse> call, Response<PlaceOrderResponse> response) {
                                 if(response.isSuccessful()){
                                     latitude =SharedPref.read(SharedPref.LAT,null);
                                     longitude =SharedPref.read(SharedPref.LNG,null);
+
                                     assert response.body() != null;
                                     Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                    AppNetworkBuilder.getClient().sendCheckout(token).enqueue(new Callback<CheckoutResponse>() {
+                                        @Override
+                                        public void onResponse(Call<CheckoutResponse> call, Response<CheckoutResponse> response) {
+                                            if (response.isSuccessful()){
+                                                assert response.body() != null;
+                                                Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                                startActivity( new Intent(CheckoutActivity.this,SuccessActivity.class));
+
+                                            }else {
+                                                CheckoutResponse message = new Gson().fromJson(response.errorBody().charStream(), CheckoutResponse.class);
+                                                Toast.makeText(getApplicationContext(),  message.getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<CheckoutResponse> call, Throwable t) {
+                                            Toast.makeText(getApplicationContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    });
                                 }else {
                                     assert response.errorBody() != null;
                                     PlaceOrderResponse message = new Gson().fromJson(response.errorBody().charStream(), PlaceOrderResponse.class);
@@ -133,6 +155,8 @@ public class CheckoutActivity extends AppCompatActivity {
 
                             }
                         });
+
+
             }
         });
     }
@@ -302,7 +326,6 @@ public class CheckoutActivity extends AppCompatActivity {
             }
         });
     }
-
     private void getUpdatesLocation() {
         LocationSettingsRequest locationSettingsRequest = new LocationSettingsRequest.Builder()
                 .addLocationRequest(locationRequest)
@@ -401,7 +424,8 @@ public class CheckoutActivity extends AppCompatActivity {
 
     }
 
-    public void countAmount() {
+    public void countAmount()
+    {
         totalAmount = 0.0;
         for (int i = 0; i < dataItemList.size(); i++) {
             double amount = Double.parseDouble(dataItemList.get(i).getQuantity())

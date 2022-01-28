@@ -17,13 +17,11 @@ public class SharedPref
     public static final String MY_ADDRESS = "myAddress";
 
 
-    private SharedPref()
-    {
+    private SharedPref() {
 
     }
 
-    public static void init(Context context)
-    {
+    public static void init(Context context) {
         if(mSharedPref == null)
             mSharedPref = context.getSharedPreferences(context.getPackageName(), Activity.MODE_PRIVATE);
     }

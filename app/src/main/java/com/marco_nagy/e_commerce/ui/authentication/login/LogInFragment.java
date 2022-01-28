@@ -17,7 +17,6 @@ import androidx.navigation.Navigation;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.gson.Gson;
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.data.AppNetworkBuilder;
 import com.marco_nagy.e_commerce.data.SharedPref;
@@ -103,9 +102,9 @@ public class LogInFragment extends Fragment {
 
                 if (!response.isSuccessful()){
                     assert response.errorBody() != null;
-                    LoginResponseError message = new Gson().fromJson(response.errorBody().charStream(), LoginResponseError.class);
-                    Toast.makeText(getContext(), "" + message.getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "onResponse Error: "+message.getMessage());
+                   // LoginResponseError message = new Gson().fromJson(response.errorBody().charStream(), LoginResponseError.class);
+                    Toast.makeText(getContext(), "" + response.message(), Toast.LENGTH_SHORT).show();
+                    Log.i(TAG, "onResponse Error: "+response.message());
                     Log.i(TAG, "onResponse Error: "+token);
 
 

@@ -89,7 +89,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                             quantity = response.body().getData().getQuantity();
                             strQuantity = Integer.toString(quantity);
                             dataItemList.get(holder.getAdapterPosition()).setQuantity(String.valueOf(quantity));
-
                             holder.binding.quantityText.setText(strQuantity);
                             cartInterface.onUpdateCart();
 
@@ -113,7 +112,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                     public void onResponse(@NotNull Call<SubResponse> call, @NotNull Response<SubResponse> response) {
                         if (response.isSuccessful()) {
                             assert response.body() != null;
-
                             quantity = response.body().getData().getQuantity();
                             strQuantity = Integer.toString(quantity);
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -150,6 +148,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
                             dataItemList.remove(holder.getAdapterPosition());
                             CartAdapter.this.notifyItemRemoved(holder.getAdapterPosition());
+
                             cartInterface.onUpdateCart();
                         } else {
                             assert response.errorBody() != null;

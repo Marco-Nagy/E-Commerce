@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,7 +37,7 @@ public class CartFragment extends Fragment {
     String token = SharedPref.read(SharedPref.Token, null);
     List<DataItem> dataItemList;
     CartAdapter cartAdapter;
-    double totalAmount = 0.0;
+
     private static final String TAG = "CartFragment";
 
     @Override
@@ -53,10 +54,18 @@ public class CartFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getCart();
+
+
+
+
         binding.checkoutBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(dataItemList.isEmpty()){
+                    Toast.makeText(getContext(), "Your Cart Is Empty", Toast.LENGTH_SHORT).show();
+                }else
                 startActivity(new Intent(getContext(), CheckoutActivity.class));
+
             }
         });
 
@@ -93,18 +102,22 @@ public class CartFragment extends Fragment {
 
         cartAdapter = new CartAdapter(dataItemList, getContext(), cartInterface);
         binding.cartRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        binding.cartRV.setAdapter(cartAdapter);
+        if(cartAdapter.getItemCount()== 0){
+                binding.cartAnim.setVisibility(View.VISIBLE);
+            }else {
+            binding.cartRV.setAdapter(cartAdapter);
+        }
+
 
 
     }
 
     public void countAmount() {
-        totalAmount = 0.0;
+        double totalAmount = 0.0;
         for (int i = 0; i < dataItemList.size(); i++) {
             double amount = Double.parseDouble(dataItemList.get(i).getQuantity())
                     * Double.parseDouble(dataItemList.get(i).getProductId().getPrice());
             totalAmount = totalAmount + amount;
-
 
         }
         binding.amountTextV.setText(String.valueOf(totalAmount));
@@ -116,6 +129,9 @@ public class CartFragment extends Fragment {
         @Override
         public void onUpdateCart() {
             countAmount();
+            if(dataItemList.isEmpty()){
+                binding.cartAnim.setVisibility(View.VISIBLE);
+            }
 
         }
 

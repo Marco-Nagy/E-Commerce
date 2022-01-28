@@ -16,7 +16,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.google.gson.Gson;
 import com.marco_nagy.e_commerce.R;
 import com.marco_nagy.e_commerce.data.AppNetworkBuilder;
 import com.marco_nagy.e_commerce.databinding.FragmentHomeBinding;
@@ -101,8 +100,8 @@ public class HomeFragment extends Fragment {
             public void onResponse(@NotNull Call<LatestResponse> call, @NotNull Response<LatestResponse> response) {
                 if (!response.isSuccessful()) {
                     assert response.errorBody() != null;
-                    LatestResponse message = new Gson().fromJson(response.errorBody().charStream(), LatestResponse.class);
-                    Log.i(TAG, "onResponse: " + message.getMessage());
+                    //LatestResponse message = new Gson().fromJson(response.errorBody().charStream(), LatestResponse.class);
+                    Log.i(TAG, "onResponse: " + response.message());
 
                 } else {
                     assert response.body() != null;
